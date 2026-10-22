@@ -1,0 +1,32 @@
+
+.logo-img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: rotate(20deg) scale(1.08);
+}
+
+.logo-text h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.logo-text p {
+  margin: 4px 0 0;
+  color: #8b95a5;
+  font-size: 11px;
+}
+
+@media (max-width: 600px) {
+  .logo-img {
+    width: 38px;
+    height: 38px;
+  }
+}

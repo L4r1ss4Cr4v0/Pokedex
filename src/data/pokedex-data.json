@@ -3079,7 +3079,7 @@
       "id": 6,
       "name": "Koga",
       "badges": 5,
-      "pokemonIds": [48, 48, 48, 49]
+      "pokemonIds": [48, 49]
     },
     {
       "id": 7,
@@ -3115,7 +3115,7 @@
       "id": 12,
       "name": "Lance",
       "badges": 9,
-      "pokemonIds": [130, 148, 149, 142, 149]
+      "pokemonIds": [130, 148, 149, 142]
     }
   ]
 }

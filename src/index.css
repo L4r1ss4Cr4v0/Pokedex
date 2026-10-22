@@ -1,7 +1,7 @@
 :root {
   --text: #6b6375;
   --text-h: #08060d;
-  --bg: #fff;
+  --bg: #e3e3e3;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;
@@ -11,8 +11,8 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: Arial, Helvetica, sans-serif;
+  --heading: Arial, Helvetica, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
@@ -24,6 +24,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  display: flex;
+  flex-direction: columns;
+  align-items: center;
+  justify-content: center;
 
   @media (max-width: 1024px) {
     font-size: 16px;
@@ -55,7 +60,6 @@ body {
 }
 
 #root {
-  width: 1126px;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -95,17 +99,97 @@ p {
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+button {
+  cursor: pointer;
+  border: #dcdcd7 1px solid;
+  font-size: medium;
+  background-color: #fff;
+  padding: 15px 20px;
+  border-radius: 10px;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+button:hover {
+  background-color: #f3f4f6;
+}
+
+.header-card {
+  position: absolute;
+}
+
+.pokemon-card {
+  padding: 30px;
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #9ca3af;
+  border-radius: 30px;
+}
+
+.link-btn {
+  border: none;
+}
+
+.link-btn svg {
+  width: 25px;
+  height: auto;
+}
+
+.tag {
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 30px;
+  font-size: medium;
+}
+
+.tags-list {
+  display: flex;
+  column-gap: 10px;
+  margin-bottom: 10px;
+}
+
+.main-info-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.grid-list {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.grid-atributtes {
+  text-align: start;
+  display: grid;
+  grid-template-rows: repeat(4, 60px);
+  grid-template-columns: repeat(3, 110px);
+  border-top: 1px #08060d solid;
+  padding-top: 30px;
+  color: #08060d;
+  font-weight: bold;
+}
+
+.atribute-title {
+  font-size: medium;
+  color: #727272;
+  font-weight: normal;
+}
+
+.number {
+  color: #6b6375;
+}
+
+.filters-row select,
+.filters-row input {
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: larger;
+}
+
+.filters-row {
+  gap: 15px;
+  width: 50vh;
+  display: flex;
+  padding: 20px 0;
 }

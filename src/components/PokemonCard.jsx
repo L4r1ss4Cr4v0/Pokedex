@@ -1,4 +1,5 @@
 import { colorTypes } from "../constants/colorTypes";
+import "../css/PokemonCard.css";
 
 export default function PokemonCard({ data }) {
   const pokemon = data;
@@ -6,7 +7,7 @@ export default function PokemonCard({ data }) {
   const url = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`;
 
   return (
-    <article className="pokemon-card">
+    <article className="pokemon-card" style={{"--pokemon-color":colorTypes[pokemon.types[0]?.id]?.color || "#6b8f78",}}>
       <div className="header-card">
         <span className="number">#{pokemon.id}</span>
       </div>

@@ -1,0 +1,450 @@
+
+/* ==========================================
+   POKÉMON CARD — ESTILO PRINCIPAL
+========================================== */
+
+.pokemon-card {
+  --pokemon-color: #6b8f78;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  padding: 20px;
+
+  overflow: hidden;
+  border-radius: 18px;
+
+  border: 1px solid
+    color-mix(in srgb, var(--pokemon-color) 30%, transparent);
+
+  background:
+    radial-gradient(
+      ellipse 48% 56% at 50% 49%,
+      color-mix(in srgb, var(--pokemon-color) 35%, transparent) 0%,
+      color-mix(in srgb, var(--pokemon-color) 13%, transparent) 60%,
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      #1a242a 0%,
+      #182329 65%,
+      #151d24 100%
+    );
+
+  color: #f8fafc;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--pokemon-color);
+
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+/* ==========================================
+   NÚMERO DO POKÉMON
+========================================== */
+
+.pokemon-card .header-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.pokemon-card .number {
+  color: #aebdc8;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   CÍRCULO DECORATIVO
+========================================== */
+
+.pokemon-card::before {
+  content: "";
+  position: absolute;
+  top: 52px;
+  left: 50%;
+
+  width: 180px;
+  height: 180px;
+
+  transform: translateX(-50%);
+  border-radius: 50%;
+
+  background: color-mix(
+    in srgb,
+    var(--pokemon-color) 13%,
+    transparent
+  );
+
+  border: 18px solid rgba(255, 255, 255, 0.025);
+  pointer-events: none;
+}
+
+/* ==========================================
+   IMAGEM DO POKÉMON
+========================================== */
+
+.pokemon-card > img {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+  width: 180px;
+  max-width: 85%;
+  height: 190px;
+
+  margin: 0 auto;
+  object-fit: contain;
+
+  transition: transform 0.3s ease;
+}
+
+.pokemon-card:hover > img {
+  transform: scale(1.07);
+}
+
+/* ==========================================
+   NOME DO POKÉMON
+========================================== */
+
+.pokemon-card .main-info-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.pokemon-card .title {
+  margin: 0;
+  color: #f8fafc;
+
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+  text-transform: capitalize;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   TIPOS DO POKÉMON
+========================================== */
+
+.pokemon-card .tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  min-width: 0;
+  margin: 0;
+}
+
+.pokemon-card .tag {
+  padding: 5px 10px;
+  border-radius: 6px;
+
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* ==========================================
+   BOTÃO VER DETALHES
+========================================== */
+
+.pokemon-card .link-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 40px;
+  padding: 10px 14px;
+
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(8, 15, 20, 0.55);
+  color: #f8fafc;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.pokemon-card .link-btn svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+
+  stroke: var(--pokemon-color);
+  fill: none;
+}
+
+.pokemon-card .link-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--pokemon-color);
+}
+
+.pokemon-card .link-btn:focus-visible {
+  outline: 2px solid var(--pokemon-color);
+  outline-offset: 3px;
+}
+
+/* ==========================================
+   ESTATÍSTICAS
+   Ocultas nos cards da página inicial
+========================================== */
+
+.grid-list .pokemon-card .grid-atributtes,
+.pokemon-grid .pokemon-card .grid-atributtes,
+.pokemon-list .pokemon-card .grid-atributtes,
+.cards-container .pokemon-card .grid-atributtes {
+  display: none;
+}
+
+/* ==========================================
+   LIGHT MODE — CARD
+========================================== */
+
+body.light-mode .pokemon-card {
+  background:
+    radial-gradient(
+      ellipse 58% 58% at 50% 45%,
+      color-mix(
+        in srgb,
+        var(--pokemon-color) 22%,
+        transparent
+      ) 0%,
+      color-mix(
+        in srgb,
+        var(--pokemon-color) 9%,
+        transparent
+      ) 65%,
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      #fafbfd 0%,
+      #f0f4f9 65%,
+      #e9eff6 100%
+    );
+
+  color: #243447;
+
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--pokemon-color) 25%,
+      #d2dce8
+    );
+
+  box-shadow: 0 4px 14px rgba(36, 52, 71, 0.05);
+}
+
+body.light-mode .pokemon-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--pokemon-color);
+
+  box-shadow:
+    0 12px 28px rgba(36, 52, 71, 0.12),
+    0 0 0 1px
+      color-mix(
+        in srgb,
+        var(--pokemon-color) 20%,
+        transparent
+      );
+}
+
+/* ==========================================
+   LIGHT MODE — CÍRCULO DECORATIVO
+========================================== */
+
+body.light-mode .pokemon-card::before {
+  background: color-mix(
+    in srgb,
+    var(--pokemon-color) 13%,
+    transparent
+  );
+
+  border: 18px solid rgba(255, 255, 255, 0.35);
+}
+
+/* ==========================================
+   LIGHT MODE — NÚMERO E NOME
+========================================== */
+
+body.light-mode .pokemon-card .number {
+  color: #66788d;
+}
+
+body.light-mode .pokemon-card .title {
+  color: #243447;
+}
+
+/* ==========================================
+   LIGHT MODE — TIPOS
+========================================== */
+
+body.light-mode .pokemon-card .tag {
+  color: #ffffff;
+  box-shadow: 0 2px 5px rgba(36, 52, 71, 0.08);
+}
+
+/* ==========================================
+   LIGHT MODE — BOTÃO DE DETALHES
+========================================== */
+
+body.light-mode .pokemon-card .link-btn {
+  background: rgba(255, 255, 255, 0.75);
+  color: #243447;
+
+  border: 1px solid #d2dce8;
+}
+
+body.light-mode .pokemon-card .link-btn svg {
+  stroke: var(--pokemon-color);
+}
+
+body.light-mode .pokemon-card .link-btn:hover {
+  background: #ffffff;
+  border-color: var(--pokemon-color);
+}
+
+/* ==========================================
+   LIGHT MODE — ESTATÍSTICAS
+   Preserva a exibição na página de detalhes
+========================================== */
+
+body.light-mode .pokemon-card .grid-atributtes {
+  color: #526579;
+}
+
+body.light-mode .pokemon-card .atribute-title {
+  color: #243447;
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+========================================== */
+
+@media (max-width: 600px) {
+  .pokemon-card {
+    padding: 15px;
+    gap: 12px;
+  }
+
+  .pokemon-card > img {
+    width: 150px;
+    height: 160px;
+  }
+
+  .pokemon-card::before {
+    top: 48px;
+    width: 145px;
+    height: 145px;
+  }
+
+  .pokemon-card .title {
+    font-size: 18px;
+  }
+
+  .pokemon-card .link-btn {
+    min-height: 38px;
+  }
+}
+
+/* ==========================================
+   ACESSIBILIDADE
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .pokemon-card,
+  .pokemon-card > img,
+  .pokemon-card .link-btn {
+    transition: none;
+  }
+
+  .pokemon-card:hover,
+  .pokemon-card:hover > img {
+    transform: none;
+  }
+}
+
+/* ==========================================
+   LIGHT MODE — CONTRASTE SUAVE
+========================================== */
+
+body.light-mode .pokemon-card {
+  background:
+    radial-gradient(
+      ellipse 58% 58% at 50% 45%,
+      color-mix(
+        in srgb,
+        var(--pokemon-color) 12%,
+        transparent
+      ) 0%,
+      color-mix(
+        in srgb,
+        var(--pokemon-color) 4%,
+        transparent
+      ) 65%,
+      transparent 100%
+    ),
+    color-mix(
+      in srgb,
+      var(--pokemon-color) 15%,
+      #e6ebf1
+    );
+
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--pokemon-color) 15%,
+      #e6ebf1
+    );
+
+  box-shadow: 0 2px 8px rgba(36, 52, 71, 0.035);
+}
+
+body.light-mode .pokemon-card:hover {
+  border-color: var(--pokemon-color);
+  box-shadow: 0 10px 24px rgba(36, 52, 71, 0.09);
+}
+
+body.light-mode .pokemon-card::before {
+  background: color-mix(
+    in srgb,
+    var(--pokemon-color) 9%,
+    transparent
+  );
+
+  border-color: rgba(255, 255, 255, 0.3);
+}

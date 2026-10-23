@@ -1,14 +1,22 @@
-import DisplayList from "../components/DisplayList";
-import FiltersRow from "../components/FiltersRow";
-import Header from "../components/Header";
-import TrainerCard from "../components/TrainerCard";
 import { trainers } from "../data/pokedex-data.json";
+import TrainerCard from "../components/TrainerCard";
 
 export default function TrainersPage() {
+  const columns = [[], [], []];
+
+  trainers.forEach((trainer, index) => {
+    columns[index % 3].push(trainer);
+  });
+
   return (
-    <>
-      <Header />
-      <DisplayList itens={trainers} Element={TrainerCard} />
-    </>
+    <section className="trainers-grid">
+      {columns.map((column, index) => (
+        <div className="trainers-column" key={index}>
+          {column.map((trainer) => (
+            <TrainerCard key={trainer.id} data={trainer} />
+          ))}
+        </div>
+      ))}
+    </section>
   );
 }

@@ -1,9 +1,64 @@
 
+/* ========================================
+   HEADER - POKÉDEX
+======================================== */
+
+.header {
+  width: 100%;
+  max-width: 100%;
+
+  background-color: #11151c;
+  border-bottom: 1px solid #252b35;
+
+  position: relative;
+  z-index: 100;
+}
+
+/* ========================================
+   CONTAINER PRINCIPAL
+======================================== */
+
+.header-container {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 82px;
+
+  margin: 0;
+  padding: 14px 32px;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  align-items: center;
+  column-gap: 24px;
+}
+
+/* ========================================
+   LOGO + TEXTO
+======================================== */
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  justify-self: start;
+
+  gap: 12px;
+  min-width: 0;
+}
+
+/* IMAGEM DA POKÉBOLA */
+
 .logo-img {
-  width: 45px;
-  height: 45px;
+  display: block;
+
+  width: 48px;
+  height: 48px;
+
   object-fit: contain;
   flex-shrink: 0;
+
   transition: transform 0.3s ease;
 }
 
@@ -11,22 +66,374 @@
   transform: rotate(20deg) scale(1.08);
 }
 
+/* TEXTO AO LADO DA LOGO */
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: 4px;
+  min-width: 0;
+}
+
+/* TÍTULO */
+
 .logo-text h2 {
   margin: 0;
+  padding: 0;
+
   color: #ffffff;
   font-size: 20px;
   font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
 }
+
+/* SUBTÍTULO */
 
 .logo-text p {
-  margin: 4px 0 0;
+  margin: 0;
+  padding: 0;
+
   color: #8b95a5;
   font-size: 11px;
+  font-weight: 400;
+  line-height: 1.4;
+  white-space: nowrap;
 }
 
-@media (max-width: 600px) {
+/* ========================================
+   NAVEGAÇÃO
+======================================== */
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+
+  gap: 32px;
+  min-width: 0;
+}
+
+.header-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #9ca3af;
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+
+  transition: color 0.2s ease;
+}
+
+/* HOVER DA NAVEGAÇÃO — MODO ESCURO */
+.header-nav a:hover {
+  color: #ff5c75;
+}
+
+/* HOVER DA NAVEGAÇÃO — MODO CLARO */
+body.light-mode .header-nav a:hover {
+  color: #38a6e8;
+}
+
+/* LINK DA PÁGINA ATIVA */
+.header-nav a.nav-active {
+  color: #ed3155;
+}
+
+/* LINK ATIVO NO MODO CLARO */
+body.light-mode .header-nav a.nav-active {
+  color: #d92d50;
+}
+
+.header-nav a.nav-active {
+  color: #ed3155;
+}
+
+/* ========================================
+   BOTÃO DE MODO CLARO / ESCURO
+======================================== */
+
+.header .header-container button.theme-toggle {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  justify-self: center;
+  align-self: center;
+
+  width: fit-content !important;
+  min-width: 0 !important;
+  max-width: none !important;
+
+  height: 28px !important;
+  min-height: 0 !important;
+
+  padding: 4px 8px !important;
+  margin: 0 !important;
+
+  flex: 0 0 auto !important;
+
+  background: #202833 !important;
+  border: 1px solid #364252 !important;
+  border-radius: 6px;
+
+  color: #e5e7eb !important;
+
+  font-family: inherit;
+  font-size: 10px !important;
+  font-weight: 600;
+  line-height: 1 !important;
+
+  white-space: nowrap;
+  box-sizing: border-box;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* HOVER */
+
+.header .header-container button.theme-toggle:hover {
+  background: #303c4b !important;
+  border-color: #46556a !important;
+
+  transform: translateY(-1px);
+}
+
+/* ACESSIBILIDADE */
+
+.header .header-container button.theme-toggle:focus-visible {
+  outline: 2px solid #ed3155;
+  outline-offset: 3px;
+}
+
+/* ========================================
+   BOTÃO NO MODO CLARO
+======================================== */
+
+body.light-mode .header .header-container button.theme-toggle {
+  background: #edf1f5 !important;
+  border-color: #d3dbe4 !important;
+  color: #243447 !important;
+}
+
+body.light-mode .header .header-container button.theme-toggle:hover {
+  background: #e1e7ed !important;
+  border-color: #bfcbd8 !important;
+}
+
+/* ========================================
+   INDICADOR KANTO
+======================================== */
+
+.header-status {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  justify-self: end;
+
+  gap: 9px;
+  min-width: 0;
+
+  color: #9ca3af;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* BOLINHA VERDE */
+
+.status-dot {
+  display: inline-block;
+
+  width: 7px;
+  height: 7px;
+
+  background-color: #4ade80;
+  border-radius: 50%;
+
+  flex-shrink: 0;
+}
+
+/* ========================================
+   RESPONSIVIDADE - TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .header-container {
+    padding: 14px 24px;
+    column-gap: 16px;
+  }
+
+  .header-nav {
+    gap: 20px;
+  }
+
+  .logo-img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .logo-text h2 {
+    font-size: 18px;
+  }
+
+  .logo-text p {
+    font-size: 10px;
+  }
+
+  .header-status {
+    font-size: 10px;
+  }
+
+  .header .header-container button.theme-toggle {
+    height: 28px !important;
+    padding: 4px 7px !important;
+    font-size: 10px !important;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE - CELULAR
+======================================== */
+
+@media (max-width: 650px) {
+  .header-container {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+
+    min-height: 72px;
+
+    padding: 12px 16px;
+
+    column-gap: 12px;
+    row-gap: 16px;
+  }
+
+  /* LOGO */
+
+  .header-logo {
+    grid-column: 1;
+    grid-row: 1;
+
+    gap: 9px;
+  }
+
   .logo-img {
     width: 38px;
     height: 38px;
+  }
+
+  .logo-text h2 {
+    font-size: 17px;
+  }
+
+  .logo-text p {
+    display: none;
+  }
+
+  /* NAVEGAÇÃO */
+
+  .header-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    justify-self: center;
+    justify-content: center;
+
+    gap: 24px;
+  }
+
+  .header-nav a {
+    font-size: 12px;
+  }
+
+  /* BOTÃO DE TEMA */
+
+  .header .header-container button.theme-toggle {
+    grid-column: 2;
+    grid-row: 1;
+
+    justify-self: end;
+
+    width: fit-content !important;
+    height: 28px !important;
+
+    padding: 4px 7px !important;
+    font-size: 10px !important;
+  }
+
+  /* INDICADOR KANTO */
+
+  .header-status {
+    display: none;
+  }
+}
+
+/* ========================================
+   RESPONSIVIDADE - CELULAR PEQUENO
+======================================== */
+
+@media (max-width: 380px) {
+  .header-container {
+    padding: 12px;
+    column-gap: 8px;
+  }
+
+  .header-logo {
+    gap: 7px;
+  }
+
+  .logo-img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo-text h2 {
+    font-size: 15px;
+  }
+
+  .header-nav {
+    gap: 18px;
+  }
+
+  .header .header-container button.theme-toggle {
+    height: 26px !important;
+    padding: 3px 6px !important;
+    font-size: 9px !important;
+  }
+}
+
+/* ========================================
+   REDUÇÃO DE MOVIMENTO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-img,
+  .header-nav a,
+  .header .header-container button.theme-toggle {
+    transition: none;
+  }
+
+  .logo-img:hover {
+    transform: none;
+  }
+
+  .header .header-container button.theme-toggle:hover {
+    transform: none;
   }
 }

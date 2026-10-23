@@ -1,184 +1,653 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+/* ==========================================
+   POKÉDEX — ESTILOS GERAIS
+========================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: #171c24;
+  color: #f8fafc;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.header {
+  width: 100%;
+}
+
+.header-container {
+  width: 100%;
+}
+
+/* ==========================================
+   CONTEÚDO PRINCIPAL
+========================================== */
 
 #center {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 28px;
 
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
+  width: 100%;
+  max-width: 1280px;
+  min-width: 0;
+
+  margin: 0 auto;
+  padding: 32px 40px 60px;
+}
+
+/* ==========================================
+   GRID DOS POKÉMON
+========================================== */
+
+.pokemon-grid,
+.pokemon-list,
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+
+  width: 100%;
+  max-width: 1200px;
+  min-width: 0;
+
+  margin: 0 auto;
+  padding: 0;
+
+  list-style: none;
+}
+
+/* Evita que os cards ultrapassem as colunas */
+
+.pokemon-grid > *,
+.pokemon-list > *,
+.cards-container > * {
+  min-width: 0;
+}
+
+/* ==========================================
+   CARDS — TAMANHO
+========================================== */
+
+.pokemon-grid .pokemon-card,
+.pokemon-list .pokemon-card,
+.cards-container .pokemon-card {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+}
+
+/* ==========================================
+   GRID REAL DA POKÉDEX
+========================================== */
+
+.grid-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+
+  width: calc(100% - 80px);
+  max-width: 1200px;
+  min-width: 0;
+
+  margin: 1px auto 20px;
+  padding: 0;
+}
+
+.grid-list .pokemon-card {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+}
+
+/* ==========================================
+   ÁREA DOS FILTROS E PESQUISA
+========================================== */
+
+.filters-row,
+.filters-container,
+.search-filter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+
+  width: 100%;
+  max-width: 1200px;
+  min-width: 0;
+
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* ==========================================
+   SELECT — FILTRO POR TIPO
+========================================== */
+
+.filters-row select,
+.filters-container select,
+.search-filter-container select,
+#center select {
+  appearance: auto;
+
+  width: auto;
+  min-width: 190px;
+  max-width: 100%;
+  height: 46px;
+
+  padding: 0 16px;
+
+  border: 1px solid #323d49;
+  border-radius: 10px;
+
+  background: #202a35;
+  color: #f8fafc;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  outline: none;
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.25s ease;
+}
+
+#center select option {
+  background: #202a35;
+  color: #ffffff;
+}
+
+/* ==========================================
+   CAMPO DE PESQUISA
+========================================== */
+
+.filters-row input,
+.filters-container input,
+.search-filter-container input,
+#center input[type="text"],
+#center input[type="search"] {
+  width: 100%;
+  max-width: 360px;
+  min-width: 200px;
+  height: 46px;
+
+  padding: 0 16px;
+
+  border: 1px solid #323d49;
+  border-radius: 10px;
+
+  background: #202a35;
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.25s ease;
+}
+
+#center input::placeholder {
+  color: #8794a4;
+  opacity: 1;
+}
+
+/* ==========================================
+   FOCO DOS CAMPOS
+========================================== */
+
+#center select:focus,
+#center input:focus {
+  border-color: #ef4050;
+  box-shadow: 0 0 0 3px rgba(239, 64, 80, 0.12);
+}
+
+/* ==========================================
+   BOTÕES DOS FILTROS
+========================================== */
+
+.filters-row button,
+.filters-container button,
+.search-filter-container button {
+  min-height: 40px;
+  padding: 9px 14px;
+
+  border: 1px solid #323d49;
+  border-radius: 9px;
+
+  background: #202a35;
+  color: #cbd5e1;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.filters-row button:hover,
+.filters-container button:hover,
+.search-filter-container button:hover {
+  background: #293644;
+  border-color: #ef4050;
+}
+
+/* ==========================================
+   BOTÃO DE ALTERNÂNCIA DE TEMA
+========================================== */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 40px;
+  padding: 9px 16px;
+
+  border: 1px solid #64748b;
+  border-radius: 20px;
+
+  background: #252f3c;
+  color: #f8fafc;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: #303d4d;
+  border-color: #ef4050;
+  transform: translateY(-2px);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid #ef4050;
+  outline-offset: 3px;
+}
+
+/* ==========================================
+   LIGHT MODE — PALETA
+   Fundo: off-white azulado
+   Cards: branco suave
+   Destaques: vermelho Pokédex
+========================================== */
+
+/* Fundo principal */
+
+body.light-mode,
+body.light-mode #root {
+  background: #f1f4f8;
+  color: #243447;
+}
+
+/* ==========================================
+   LIGHT MODE — HEADER
+========================================== */
+
+body.light-mode .header {
+  background: #e7edf5;
+  border-bottom: 1px solid #d2dce8;
+}
+
+body.light-mode .header-container {
+  background: transparent;
+}
+
+body.light-mode .header h2,
+body.light-mode .header p,
+body.light-mode .header-nav a,
+body.light-mode .header-status {
+  color: #243447;
+}
+
+body.light-mode .header .logo-text p {
+  color: #66788d;
+}
+
+body.light-mode .header-nav .nav-active {
+  color: #e64b5d;
+}
+
+/* ==========================================
+   LIGHT MODE — BOTÃO DE TEMA
+========================================== */
+
+body.light-mode .theme-toggle {
+  background: #fafbfd;
+  color: #243447;
+  border-color: #cbd5e1;
+}
+
+body.light-mode .theme-toggle:hover {
+  background: #fce8eb;
+  border-color: #e64b5d;
+  color: #c73349;
+}
+
+/* ==========================================
+   LIGHT MODE — CARDS DOS POKÉMON
+========================================== */
+
+body.light-mode .pokemon-card {
+  background: #fafbfd;
+  color: #243447;
+  border-color: #d2dce8;
+}
+
+body.light-mode .pokemon-card .header-card {
+  color: #526579;
+}
+
+body.light-mode .pokemon-card .number {
+  color: #66788d;
+}
+
+body.light-mode .pokemon-card .title,
+body.light-mode .pokemon-card .atribute-title {
+  color: #243447;
+}
+
+body.light-mode .pokemon-card .grid-atributtes {
+  color: #526579;
+}
+
+body.light-mode .pokemon-card .link-btn {
+  color: #e64b5d;
+}
+
+/* ==========================================
+   LIGHT MODE — CARDS DOS TREINADORES
+========================================== */
+
+body.light-mode .trainer-card {
+  background: linear-gradient(
+    145deg,
+    #fafbfd 0%,
+    #edf2f8 100%
+  );
+
+  color: #243447;
+  border-color: #d2dce8;
+}
+
+body.light-mode .trainer-card:hover {
+  border-color: #e64b5d;
+}
+
+body.light-mode .trainer-name {
+  color: #243447;
+}
+
+body.light-mode .trainer-number,
+body.light-mode .trainer-summary,
+body.light-mode .trainer-expand-label {
+  color: #526579;
+}
+
+body.light-mode .trainer-toggle {
+  color: #243447;
+}
+
+body.light-mode .trainer-details {
+  background: #edf2f8;
+  color: #243447;
+  border-color: #d2dce8;
+}
+
+body.light-mode .trainer-details h3 {
+  color: #243447;
+}
+
+body.light-mode .trainer-pokemon-item {
+  background: #fafbfd;
+  color: #243447;
+  border-color: #d2dce8;
+}
+
+body.light-mode .trainer-pokemon-item:hover {
+  background: #ffffff;
+  border-color: #e64b5d;
+}
+
+body.light-mode .trainer-pokemon-item span {
+  color: #243447;
+}
+
+body.light-mode .trainer-pokemon-item small {
+  color: #66788d;
+}
+
+/* ==========================================
+   LIGHT MODE — FILTROS E PESQUISA
+========================================== */
+
+body.light-mode .filters-row input,
+body.light-mode .filters-row select,
+body.light-mode .filters-container input,
+body.light-mode .filters-container select,
+body.light-mode .search-filter-container input,
+body.light-mode .search-filter-container select,
+body.light-mode #center input[type="text"],
+body.light-mode #center input[type="search"],
+body.light-mode #center select {
+  background: #fafbfd;
+  color: #243447;
+  border-color: #cbd5e1;
+}
+
+body.light-mode #center select option {
+  background: #fafbfd;
+  color: #243447;
+}
+
+body.light-mode #center input::placeholder {
+  color: #8190a2;
+}
+
+body.light-mode #center input:focus,
+body.light-mode #center select:focus {
+  border-color: #e64b5d;
+  box-shadow: 0 0 0 3px rgba(230, 75, 93, 0.12);
+}
+
+body.light-mode .filters-row button,
+body.light-mode .filters-container button,
+body.light-mode .search-filter-container button {
+  background: #fafbfd;
+  color: #243447;
+  border-color: #cbd5e1;
+}
+
+body.light-mode .filters-row button:hover,
+body.light-mode .filters-container button:hover,
+body.light-mode .search-filter-container button:hover {
+  background: #fce8eb;
+  border-color: #e64b5d;
+}
+
+/* ==========================================
+   LIGHT MODE — LINKS
+========================================== */
+
+body.light-mode a {
+  color: inherit;
+}
+
+body.light-mode #center > a {
+  color: #c73349;
+  font-weight: 600;
+}
+
+body.light-mode #center > a:hover {
+  color: #e64b5d;
+}
+
+/* ==========================================
+   RESPONSIVIDADE — TABLET
+========================================== */
+
+@media (max-width: 950px) {
+  #center {
+    padding: 28px 24px 50px;
+  }
+
+  .pokemon-grid,
+  .pokemon-list,
+  .cards-container,
+  .grid-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
   }
+
+  .grid-list {
+    width: calc(100% - 48px);
+    margin-top: 28px;
+  }
+
+  .theme-toggle {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
 }
 
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
+/* ==========================================
+   RESPONSIVIDADE — CELULAR
+========================================== */
 
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
+@media (max-width: 600px) {
+  #center {
+    gap: 20px;
+    padding: 24px 16px 40px;
   }
 
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
+  .pokemon-grid,
+  .pokemon-list,
+  .cards-container,
+  .grid-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
   }
 
-  @media (max-width: 1024px) {
+  .grid-list {
+    width: calc(100% - 32px);
+    margin-top: 24px;
+  }
+
+  .filters-row,
+  .filters-container,
+  .search-filter-container {
     flex-direction: column;
-    text-align: center;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .filters-row select,
+  .filters-container select,
+  .search-filter-container select,
+  #center select,
+  .filters-row input,
+  .filters-container input,
+  .search-filter-container input,
+  #center input[type="text"],
+  #center input[type="search"] {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .theme-toggle {
+    min-height: 36px;
+    padding: 7px 11px;
+    font-size: 11px;
   }
 }
 
-#docs {
-  border-right: 1px solid var(--border);
+/* ==========================================
+   ACESSIBILIDADE
+========================================== */
 
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body,
+  .theme-toggle {
+    transition: none;
+  }
+
+  .theme-toggle:hover {
+    transform: none;
   }
 }
 
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+/* Fundo mais próximo da cor dos cards */
+body.light-mode,
+body.light-mode #root {
+  background: #f5f7fa;
 }

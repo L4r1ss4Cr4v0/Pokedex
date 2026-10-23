@@ -1,0 +1,138 @@
+
+.details-stats-section {
+  width: 100%;
+  min-width: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.details-stats-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding-top: 20px;
+  margin-bottom: 24px;
+  border-top: 1px solid #252b35;
+}
+
+.details-stats-heading h2 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.details-stats-heading > span {
+  color: #8893a2;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.details-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.details-stat-row {
+  display: grid;
+  grid-template-columns: 115px 32px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+.details-stat-name {
+  color: #aab5c4;
+  font-size: 11px;
+}
+
+.details-stat-number {
+  color: #f8fafc;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.details-stat-track {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #29303b;
+}
+
+.details-stat-progress {
+  height: 100%;
+  border-radius: inherit;
+}
+
+.details-stat-progress.low {
+  background: #ff4059;
+}
+
+.details-stat-progress.high {
+  background: #9be49a;
+}
+
+.details-stats-caption {
+  margin-top: 17px;
+  color: #778393;
+  font-size: 10px;
+}
+
+@media (max-width: 480px) {
+  .details-stat-row {
+    grid-template-columns: 90px 28px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .details-stat-name {
+    font-size: 10px;
+  }
+}
+
+
+/* ==========================================
+   STATS BAR — LIGHT MODE
+========================================== */
+
+body.light-mode .details-stats-section {
+  color: #243447;
+}
+
+body.light-mode .details-stats-heading {
+  border-top-color: #dce4ed;
+}
+
+body.light-mode .details-stats-heading h2 {
+  color: #243447;
+}
+
+body.light-mode .details-stats-heading > span {
+  color: #66788d;
+}
+
+body.light-mode .details-stat-name {
+  color: #526579;
+}
+
+body.light-mode .details-stat-number {
+  color: #243447;
+}
+
+body.light-mode .details-stat-track {
+  background: #dce4ed;
+}
+
+body.light-mode .details-stat-progress.low {
+  background: #ef4059;
+}
+
+body.light-mode .details-stat-progress.high {
+  background: #59b96b;
+}
+
+body.light-mode .details-stats-caption {
+  color: #66788d;
+}

@@ -1,0 +1,551 @@
+
+/* ==========================================
+   LAYOUT DOS TREINADORES
+========================================== */
+
+.trainers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+
+  width: calc(100% - 80px);
+  max-width: 1200px;
+  margin: 40px auto 60px;
+
+  align-items: start;
+}
+
+.trainers-column {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+
+/* ==========================================
+   CARD
+========================================== */
+
+.trainers-column > .trainer-card {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  margin: 0;
+  padding: 22px;
+
+  box-sizing: border-box;
+
+  background: linear-gradient(
+    145deg,
+    #26313e 0%,
+    #202a36 45%,
+    #1b242e 100%
+  );
+
+  border: 1px solid #354354;
+  border-radius: 20px;
+  color: #f8fafc;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* HOVER SEM FUNDO BRANCO */
+
+.trainers-column > .trainer-card:hover {
+  background: linear-gradient(
+    145deg,
+    #293746,
+    #24303e,
+    #1e2834
+  ) !important;
+
+  border-color: rgba(239, 64, 80, 0.65);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.25),
+    0 0 20px rgba(239, 64, 80, 0.08);
+
+  transform: translateY(-4px);
+}
+
+/* CARD EXPANDIDO */
+
+.trainers-column > .trainer-card.expanded {
+  background: linear-gradient(
+    145deg,
+    #293746,
+    #1b242e
+  ) !important;
+
+  border-color: #ef4050;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    0 0 16px rgba(239, 64, 80, 0.08);
+}
+
+/* ==========================================
+   BOTÃO PRINCIPAL
+========================================== */
+
+.trainer-card .trainer-toggle {
+  position: relative;
+  isolation: isolate;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
+  background: transparent !important;
+  border: none;
+  border-radius: 12px;
+
+  color: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+.trainer-card .trainer-toggle:hover,
+.trainer-card .trainer-toggle:active,
+.trainer-card .trainer-toggle:focus {
+  background: transparent !important;
+  color: inherit;
+}
+
+.trainer-card .trainer-toggle:focus-visible {
+  outline: 2px solid #ef4050;
+  outline-offset: 5px;
+}
+
+/* ==========================================
+   NÚMERO DO TREINADOR
+========================================== */
+
+.trainer-card .trainer-number {
+  position: relative;
+  z-index: 2;
+
+  align-self: flex-end;
+
+  color: #a1b0c2;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ==========================================
+   DEGRADÊ ATRÁS DA IMAGEM
+========================================== */
+
+.trainer-card .trainer-toggle::before {
+  content: "";
+
+  position: absolute;
+  top: 18px;
+  left: 50%;
+
+  width: 215px;
+  height: 215px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle at 35% 30%,
+    rgba(239, 64, 80, 0.38) 0%,
+    rgba(174, 70, 121, 0.3) 30%,
+    rgba(91, 84, 151, 0.22) 55%,
+    rgba(49, 72, 116, 0.1) 72%,
+    transparent 80%
+  );
+
+  transform: translateX(-50%);
+  z-index: -1;
+  pointer-events: none;
+
+  transition: transform 0.35s ease;
+}
+
+.trainer-card .trainer-toggle::after {
+  content: "";
+
+  position: absolute;
+  top: 38px;
+  left: 50%;
+
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    145deg,
+    rgba(239, 64, 80, 0.14),
+    rgba(84, 105, 159, 0.1)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  transform: translateX(-50%);
+  z-index: -1;
+  pointer-events: none;
+
+  transition: transform 0.35s ease;
+}
+
+/* ==========================================
+   IMAGEM DO TREINADOR
+========================================== */
+
+.trainer-card .img-trainer {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+
+  width: 170px;
+  height: 190px;
+  max-width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  object-fit: contain;
+  object-position: center;
+
+  transform: none;
+
+  filter: drop-shadow(
+    0 12px 14px rgba(0, 0, 0, 0.35)
+  );
+
+  transition: transform 0.35s ease;
+}
+
+/* ANIMAÇÕES */
+
+.trainer-card:hover .img-trainer {
+  transform: translateY(-5px) scale(1.05);
+}
+
+.trainer-card:hover .trainer-toggle::before {
+  transform: translateX(-50%) scale(1.1);
+}
+
+.trainer-card:hover .trainer-toggle::after {
+  transform: translateX(-50%) scale(1.04);
+}
+
+/* ==========================================
+   NOME E INFORMAÇÕES
+========================================== */
+
+.trainer-card .trainer-name {
+  position: relative;
+  z-index: 2;
+
+  margin: 0;
+
+  color: #ffffff;
+  font-size: 27px;
+  font-weight: 800;
+  line-height: 1.2;
+
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.trainer-card .trainer-summary {
+  position: relative;
+  z-index: 2;
+
+  color: #bac8d7;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ==========================================
+   BOTÃO VER EQUIPE
+========================================== */
+
+.trainer-card .trainer-expand-label {
+  position: relative;
+  z-index: 2;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  margin-top: 8px;
+  padding: 10px 16px;
+
+  background: rgba(239, 64, 80, 0.1);
+  border: 1px solid rgba(239, 64, 80, 0.25);
+  border-radius: 10px;
+
+  color: #fa7780;
+  font-size: 13px;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.trainer-card:hover .trainer-expand-label {
+  background: rgba(239, 64, 80, 0.18);
+  border-color: rgba(239, 64, 80, 0.45);
+}
+
+/* ==========================================
+   DETALHES EXPANDIDOS
+========================================== */
+
+.trainer-card .trainer-details {
+  width: 100%;
+  margin-top: 22px;
+  padding-top: 20px;
+
+  border-top: 1px solid #394757;
+}
+
+.trainer-card .trainer-details h3 {
+  margin: 0 0 16px;
+
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* ==========================================
+   EQUIPE POKÉMON
+========================================== */
+
+.trainer-card .trainer-pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+
+  width: 100%;
+}
+
+.trainer-card .trainer-pokemon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  min-width: 0;
+  padding: 12px 6px;
+
+  background: #293847;
+  border: 1px solid #3a4b5c;
+  border-radius: 12px;
+
+  color: #ffffff;
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.trainer-card .trainer-pokemon-item:hover {
+  background: #34485b !important;
+  border-color: #ef4050;
+
+  transform: translateY(-3px);
+}
+
+.trainer-card .trainer-pokemon-item img {
+  display: block;
+
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+}
+
+.trainer-card .trainer-pokemon-item span {
+  color: #f8fafc;
+  font-size: 12px;
+  font-weight: 700;
+
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.trainer-card .trainer-pokemon-item small {
+  color: #a1b0c2;
+  font-size: 11px;
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+========================================== */
+
+@media (max-width: 950px) {
+  .trainers-grid {
+    gap: 16px;
+    width: calc(100% - 48px);
+  }
+
+  .trainers-column {
+    gap: 16px;
+  }
+
+  .trainers-column > .trainer-card {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .trainers-grid {
+    grid-template-columns: 1fr;
+    width: calc(100% - 32px);
+  }
+
+  .trainer-card .trainer-toggle::before {
+    width: 180px;
+    height: 180px;
+  }
+
+  .trainer-card .trainer-toggle::after {
+    width: 145px;
+    height: 145px;
+  }
+
+  .trainer-card .img-trainer {
+    width: 145px;
+    height: 165px;
+  }
+
+  .trainer-card .trainer-name {
+    font-size: 23px;
+  }
+
+  .trainer-card .trainer-pokemon-item img {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+/* ==========================================
+   ACESSIBILIDADE
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .trainer-card,
+  .trainer-card *,
+  .trainer-card .trainer-toggle::before,
+  .trainer-card .trainer-toggle::after {
+    transition: none !important;
+  }
+
+  .trainers-column > .trainer-card:hover,
+  .trainer-card:hover .img-trainer {
+    transform: none;
+  }
+}
+
+/* ==========================================
+   CARDS DE TREINADORES — LIGHT MODE
+========================================== */
+
+/* Card normal no modo claro */
+body.light-mode .trainers-column > .trainer-card {
+  background: linear-gradient(
+    145deg,
+    #ffffff 0%,
+    #f8fafc 55%,
+    #f0f5fa 100%
+  ) !important;
+
+  border-color: #dce4ed;
+  color: #243447;
+}
+
+/* Hover com vermelho e azul-claro */
+body.light-mode .trainers-column > .trainer-card:hover {
+  background: linear-gradient(
+    135deg,
+    #fff0f3 0%,
+    #f8faff 45%,
+    #e6f5ff 100%
+  ) !important;
+
+  border-color: #ef6078;
+
+  box-shadow:
+    0 12px 28px rgba(65, 125, 185, 0.12),
+    0 0 18px rgba(239, 64, 80, 0.08);
+
+  transform: translateY(-4px);
+}
+
+/* Card expandido */
+body.light-mode .trainers-column > .trainer-card.expanded {
+  background: linear-gradient(
+    135deg,
+    #fff2f5,
+    #eaf6ff
+  ) !important;
+
+  border-color: #ef6078;
+}
+
+/* Nome e informações */
+body.light-mode .trainer-card .trainer-name,
+body.light-mode .trainer-card .trainer-details h3 {
+  color: #243447;
+}
+
+body.light-mode .trainer-card .trainer-number,
+body.light-mode .trainer-card .trainer-summary {
+  color: #526579;
+}
+
+/* Botão Ver equipe */
+body.light-mode .trainer-card .trainer-expand-label {
+  background: rgba(239, 64, 80, 0.08);
+  border-color: rgba(239, 64, 80, 0.25);
+  color: #c73349;
+}
+
+/* Divisão dos detalhes */
+body.light-mode .trainer-card .trainer-details {
+  border-top-color: #dce4ed;
+}
+
+/* Pokémon da equipe */
+body.light-mode .trainer-card .trainer-pokemon-item {
+  background: #f0f6fc;
+  border-color: #d5e4f0;
+  color: #243447;
+}
+
+body.light-mode .trainer-card .trainer-pokemon-item:hover {
+  background: #e1f1ff !important;
+  border-color: #68b9f0;
+}
+
+body.light-mode .trainer-card .trainer-pokemon-item span {
+  color: #243447;
+}
+
+body.light-mode .trainer-card .trainer-pokemon-item small {
+  color: #66788d;
+}

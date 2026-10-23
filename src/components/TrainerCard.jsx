@@ -1,56 +1,89 @@
+
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { pokemon } from "../data/pokedex-data.json";
+import "../css/TrainerCard.css";
 
 export default function TrainerCard({ data }) {
+  const [expanded, setExpanded] = useState(false);
+
   const trainer = data;
 
-  const url = `https://play.pokemonshowdown.com/sprites/trainers/${trainer.name.toLowerCase()}.png`;
+  const trainerImages = {
+    "Team Rocket": "teamrocket.png",
+    "Lt. Surge": "ltsurge.png",
+    "Gary": "blue.png",
+  };
+
+  const imageFile =
+    trainerImages[trainer.name] ||
+    `${trainer.name.toLowerCase()}.png`;
+
+  const url =
+    `https://play.pokemonshowdown.com/sprites/trainers/${imageFile}`;
+
+  const trainerPokemons = trainer.pokemonIds
+    .map((id) => pokemon.find((p) => p.id === id))
+    .filter(Boolean);
 
   return (
-    <article className="trainer-card">
-      <div className="header-card">
-        <div className="flex">
-          <img className="img-trainer" src={url} alt={trainer.name} />
-          <span>{trainer.pokemonIds.length} Pokemons</span>
-        </div>
-        <span className="number">#{trainer.id}</span>
-      </div>
-      <div className="main-info-card">
-        <h2 className="title">{trainer.name}</h2>
-        <span className="atribute-title">Badges</span>
-        <span>{trainer.badges}</span>
-        <button className="link-btn">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="lucide lucide-square-arrow-out-up-right preview-icon"
-          >
-            <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
-            <path d="m21 3-9 9" />
-            <path d="M15 3h6v6" />
-          </svg>
-        </button>
-      </div>
+    <article className={`trainer-card ${expanded ? "expanded" : ""}`}>
+      <button
+        type="button"
+        className="trainer-toggle"
+        onClick={() => setExpanded((prev) => !prev)}
+        aria-expanded={expanded}
+      >
+        <span className="trainer-number">
+          #{trainer.id}
+        </span>
 
-      <div className="pokemon-treiner-list">
-        {trainer.pokemonIds.map((pokemonId) => {
-          return (
-            <span
-              className="justify-between flex"
-              key={trainer.id + "-" + pokemonId}
-            >
-              {pokemon[pokemonId].name}
-              {pokemonId}
-            </span>
-          );
-        })}
-      </div>
+        <img
+          className="img-trainer"
+          src={url}
+          alt={trainer.name}
+        />
+
+        <h2 className="trainer-name">
+          {trainer.name}
+        </h2>
+
+        <span className="trainer-summary">
+          {trainer.badges} insígnias · {trainer.pokemonIds.length} Pokémon
+        </span>
+
+        <span className="trainer-expand-label">
+          {expanded ? "Ocultar equipe" : "Ver equipe"}
+          <span aria-hidden="true">
+            {expanded ? "⌃" : "⌄"}
+          </span>
+        </span>
+      </button>
+
+      {expanded && (
+        <div className="trainer-details">
+          <h3>Equipe Pokémon</h3>
+
+          <div className="trainer-pokemon-grid">
+            {trainerPokemons.map((p) => (
+              <Link
+                key={p.id}
+                to={`/pokemon/${p.id}`}
+                className="trainer-pokemon-item"
+              >
+                <img
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${p.id}.png`}
+                  alt={p.name}
+                  loading="lazy"
+                />
+
+                <span>{p.name}</span>
+                <small>#{p.id}</small>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </article>
   );
 }

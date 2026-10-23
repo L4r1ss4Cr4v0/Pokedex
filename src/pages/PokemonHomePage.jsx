@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { pokemon } from "../data/pokedex-data.json";
-import Header from "../components/Header";
 import FiltersRow from "../components/FiltersRow";
 import DisplayList from "../components/DisplayList";
 import PokemonCard from "../components/PokemonCard";
@@ -26,7 +25,6 @@ export default function PokemonHomePage() {
 
   return (
     <>
-      <Header />
       <section id="center">
         <FiltersRow
           search={search}

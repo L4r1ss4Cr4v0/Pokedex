@@ -4,13 +4,23 @@ import PokemonHomePage from "./pages/PokemonHomePage";
 import TrainersPage from "./pages/TreinersPage";
 import PokemonDetailsPage from "./pages/PokemonDetailsPage";
 
+import Header from "./components/Header"; 
+import "./css/PokemonDetails.css";
+
+
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<PokemonHomePage />} />
-      <Route path="/trainers" element={<TrainersPage />} />
-      <Route path="/pokemon/:id" element={<PokemonDetailsPage />} />
-    </Routes>
+    <>
+
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<PokemonHomePage />} />
+        <Route path="/trainers" element={<TrainersPage />} />
+        <Route path="/pokemon/:id" element={<PokemonDetailsPage />} />
+      </Routes>
+    </>
+    
   );
 }
 

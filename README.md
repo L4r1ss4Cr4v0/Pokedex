@@ -288,8 +288,8 @@ Também devem ser verificados manualmente os seguintes comportamentos:
 
 Projeto desenvolvido em dupla, utilizando a metodologia de **Pair Programming**, conforme solicitado na atividade.
 
-- **Integrante 1:** [Nome completo]
-- **Integrante 2:** [Nome completo]
+- **Integrante 1:** Mayra Luìza
+- **Integrante 2:** Larissa Cravo
 
 **Curso:** Engenharia de Software
 

@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { pokemon } from "../data/pokedex-data.json";
 import "../css/TrainerCard.css";
@@ -7,12 +7,35 @@ import "../css/TrainerCard.css";
 export default function TrainerCard({ data }) {
   const [expanded, setExpanded] = useState(false);
 
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("pokedex-theme") || "dark"
+  );
+
+  useEffect(() => {
+    function handleThemeChange(event) {
+      setTheme(event.detail.theme);
+    }
+
+    window.addEventListener(
+      "pokedex-theme-change",
+      handleThemeChange
+    );
+
+    return () => {
+      window.removeEventListener(
+        "pokedex-theme-change",
+        handleThemeChange
+      );
+    };
+  }, []);
+
   const trainer = data;
+  const isRetro = theme === "retro";
 
   const trainerImages = {
     "Team Rocket": "teamrocket.png",
     "Lt. Surge": "ltsurge.png",
-    "Gary": "blue.png",
+    Gary: "blue.png",
   };
 
   const imageFile =
@@ -26,8 +49,18 @@ export default function TrainerCard({ data }) {
     .map((id) => pokemon.find((p) => p.id === id))
     .filter(Boolean);
 
+  function getPokemonImage(id) {
+    if (isRetro) {
+      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/${id}.png`;
+    }
+
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${id}.png`;
+  }
+
   return (
-    <article className={`trainer-card ${expanded ? "expanded" : ""}`}>
+    <article
+      className={`trainer-card ${expanded ? "expanded" : ""}`}
+    >
       <button
         type="button"
         className="trainer-toggle"
@@ -49,11 +82,13 @@ export default function TrainerCard({ data }) {
         </h2>
 
         <span className="trainer-summary">
-          {trainer.badges} insígnias · {trainer.pokemonIds.length} Pokémon
+          {trainer.badges} insígnias ·{" "}
+          {trainer.pokemonIds.length} Pokémon
         </span>
 
         <span className="trainer-expand-label">
           {expanded ? "Ocultar equipe" : "Ver equipe"}
+
           <span aria-hidden="true">
             {expanded ? "⌃" : "⌄"}
           </span>
@@ -72,9 +107,12 @@ export default function TrainerCard({ data }) {
                 className="trainer-pokemon-item"
               >
                 <img
-                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${p.id}.png`}
+                  src={getPokemonImage(p.id)}
                   alt={p.name}
                   loading="lazy"
+                  className={
+                    isRetro ? "retro-team-sprite" : ""
+                  }
                 />
 
                 <span>{p.name}</span>

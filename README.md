@@ -80,11 +80,15 @@ Nessa página, o usuário pode:
 - Visualizar os Pokémon pertencentes às equipes.
 - Navegar para os detalhes dos Pokémon.
 
-### 🌙 Modo claro e escuro
+### 🎨 Modos de exibição: Claro, Escuro e Retrô
 
-A aplicação oferece alternância entre os temas claro e escuro.
+A aplicação oferece três opções de personalização visual: **modo claro, modo escuro e modo retrô**.
 
-A preferência selecionada é armazenada no `localStorage`, permitindo que o tema seja mantido ao recarregar a página.
+- ☀️ **Modo claro:** apresenta uma interface com cores claras e visual limpo.
+- 🌙 **Modo escuro:** utiliza tons escuros, proporcionando maior conforto visual em ambientes com pouca iluminação.
+- 🕹️ **Modo retrô:** apresenta uma estética inspirada em interfaces e jogos clássicos, com cores e elementos visuais característicos desse estilo.
+
+A preferência selecionada é armazenada no `localStorage`, permitindo que o tema escolhido seja mantido mesmo após recarregar a página.
 
 ### 📱 Interface responsiva
 

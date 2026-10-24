@@ -1,138 +1,156 @@
 
-.details-stats-section {
-  width: 100%;
-  min-width: 0;
-  font-family: "Inter", "Segoe UI", sans-serif;
+/* =========================================
+   VOLTA NO TEMPO - GAME BOY 1996
+========================================= */
+
+body.retro-mode {
+  --gb-0: #0f380f;
+  --gb-1: #306230;
+  --gb-2: #8bac0f;
+  --gb-3: #9bbc0f;
+
+  background: var(--gb-3) !important;
+  color: var(--gb-0) !important;
+  font-family: "Courier New", monospace !important;
 }
 
-.details-stats-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+/* HEADER */
 
-  padding-top: 20px;
-  margin-bottom: 24px;
-  border-top: 1px solid #252b35;
+body.retro-mode .header {
+  background: var(--gb-0) !important;
+  border-bottom: 5px solid var(--gb-1);
 }
 
-.details-stats-heading h2 {
-  margin: 0;
-  color: #f8fafc;
-  font-size: 16px;
-  font-weight: 700;
+body.retro-mode .header .logo-text h2,
+body.retro-mode .header .logo-text p,
+body.retro-mode .header-status,
+body.retro-mode .header-nav a {
+  color: var(--gb-3) !important;
+  font-family: "Courier New", monospace !important;
 }
 
-.details-stats-heading > span {
-  color: #8893a2;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+body.retro-mode .header-nav a.nav-active {
+  color: #ffffff !important;
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
-.details-stats-list {
-  display: flex;
-  flex-direction: column;
-  gap: 17px;
+body.retro-mode .header .header-container button.theme-toggle {
+  background: var(--gb-2) !important;
+  color: var(--gb-0) !important;
+  border: 2px solid var(--gb-0) !important;
+  border-radius: 0 !important;
+  box-shadow: 3px 3px 0 var(--gb-1);
+  font-family: "Courier New", monospace;
 }
 
-.details-stat-row {
-  display: grid;
-  grid-template-columns: 115px 32px minmax(0, 1fr);
-  align-items: center;
-  gap: 12px;
+body.retro-mode .header .header-container button.retro-toggle {
+  background: var(--gb-0) !important;
+  color: var(--gb-3) !important;
+  border-color: var(--gb-3) !important;
 }
 
-.details-stat-name {
-  color: #aab5c4;
-  font-size: 11px;
+/* POKÉMON CARDS */
+
+body.retro-mode .pokemon-card {
+  background: var(--gb-2) !important;
+  border: 4px solid var(--gb-0) !important;
+  border-radius: 0 !important;
+  box-shadow: 6px 6px 0 var(--gb-1) !important;
+  color: var(--gb-0) !important;
+  font-family: "Courier New", monospace !important;
 }
 
-.details-stat-number {
-  color: #f8fafc;
-  font-size: 11px;
-  font-weight: 700;
-  text-align: right;
+body.retro-mode .pokemon-card::before {
+  display: none !important;
 }
 
-.details-stat-track {
-  height: 6px;
-  overflow: hidden;
-  border-radius: 10px;
-  background: #29303b;
+body.retro-mode .pokemon-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 8px 8px 0 var(--gb-0) !important;
 }
 
-.details-stat-progress {
-  height: 100%;
-  border-radius: inherit;
+body.retro-mode .pokemon-card > img.retro-sprite {
+  width: 160px;
+  height: 160px;
+  max-width: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: grayscale(1) sepia(1) saturate(3)
+    hue-rotate(45deg) contrast(1.3);
 }
 
-.details-stat-progress.low {
-  background: #ff4059;
+body.retro-mode .pokemon-card .title,
+body.retro-mode .pokemon-card .number,
+body.retro-mode .pokemon-card .atribute-title {
+  color: var(--gb-0) !important;
+  font-family: "Courier New", monospace !important;
+  letter-spacing: 0;
 }
 
-.details-stat-progress.high {
-  background: #9be49a;
+body.retro-mode .pokemon-card .title {
+  text-transform: uppercase;
+  font-size: 18px;
 }
 
-.details-stats-caption {
-  margin-top: 17px;
-  color: #778393;
-  font-size: 10px;
+body.retro-mode .pokemon-card .tag {
+  background: var(--gb-1) !important;
+  color: var(--gb-3) !important;
+  border: 2px solid var(--gb-0);
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-transform: uppercase;
 }
 
-@media (max-width: 480px) {
-  .details-stat-row {
-    grid-template-columns: 90px 28px minmax(0, 1fr);
-    gap: 8px;
+body.retro-mode .pokemon-card .link-btn {
+  background: var(--gb-3) !important;
+  border: 3px solid var(--gb-0) !important;
+  border-radius: 0 !important;
+  box-shadow: 3px 3px 0 var(--gb-1);
+}
+
+body.retro-mode .pokemon-card .link-btn svg {
+  stroke: var(--gb-0) !important;
+}
+
+/* PESQUISA E FILTROS */
+
+body.retro-mode input,
+body.retro-mode select {
+  background: var(--gb-2) !important;
+  color: var(--gb-0) !important;
+  border: 3px solid var(--gb-0) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: "Courier New", monospace !important;
+}
+
+body.retro-mode input::placeholder {
+  color: var(--gb-1) !important;
+}
+
+/* BOTÕES */
+
+body.retro-mode button:not(.theme-toggle):not(.link-btn) {
+  border-radius: 0 !important;
+  font-family: "Courier New", monospace !important;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  body.retro-mode .pokemon-card > img.retro-sprite {
+    width: 135px;
+    height: 135px;
   }
 
-  .details-stat-name {
-    font-size: 10px;
+  body.retro-mode .pokemon-card .title {
+    font-size: 15px;
   }
 }
 
-
-/* ==========================================
-   STATS BAR — LIGHT MODE
-========================================== */
-
-body.light-mode .details-stats-section {
-  color: #243447;
-}
-
-body.light-mode .details-stats-heading {
-  border-top-color: #dce4ed;
-}
-
-body.light-mode .details-stats-heading h2 {
-  color: #243447;
-}
-
-body.light-mode .details-stats-heading > span {
-  color: #66788d;
-}
-
-body.light-mode .details-stat-name {
-  color: #526579;
-}
-
-body.light-mode .details-stat-number {
-  color: #243447;
-}
-
-body.light-mode .details-stat-track {
-  background: #dce4ed;
-}
-
-body.light-mode .details-stat-progress.low {
-  background: #ef4059;
-}
-
-body.light-mode .details-stat-progress.high {
-  background: #59b96b;
-}
-
-body.light-mode .details-stats-caption {
-  color: #66788d;
+@media (prefers-reduced-motion: reduce) {
+  body.retro-mode .pokemon-card {
+    transition: none;
+  }
 }

@@ -1,0 +1,435 @@
+
+/* ===================================
+   POKÉDEX - GAME BOY 1996
+=================================== */
+
+body.retro-mode {
+  --gb-darkest: #0f380f;
+  --gb-dark: #306230;
+  --gb-light: #8bac0f;
+  --gb-lightest: #9bbc0f;
+
+  background: var(--gb-lightest) !important;
+  color: var(--gb-darkest) !important;
+  font-family: "Courier New", monospace !important;
+}
+
+/* HEADER */
+
+body.retro-mode .header {
+  background: var(--gb-darkest) !important;
+  border-bottom: 5px solid var(--gb-dark);
+  box-shadow: none !important;
+}
+
+body.retro-mode .header h2,
+body.retro-mode .header p,
+body.retro-mode .header-status {
+  color: var(--gb-lightest) !important;
+}
+
+body.retro-mode .header-nav a {
+  color: var(--gb-lightest) !important;
+  border-radius: 0 !important;
+}
+
+body.retro-mode .header-nav a.nav-active {
+  background: var(--gb-lightest) !important;
+  color: var(--gb-darkest) !important;
+}
+
+/* BOTÕES */
+
+body.retro-mode button,
+body.retro-mode select,
+body.retro-mode input {
+  border-radius: 0 !important;
+  font-family: "Courier New", monospace !important;
+}
+
+body.retro-mode .theme-toggle {
+  background: var(--gb-light) !important;
+  color: var(--gb-darkest) !important;
+  border: 3px solid var(--gb-darkest) !important;
+  box-shadow: 4px 4px 0 var(--gb-darkest) !important;
+}
+
+body.retro-mode .retro-toggle {
+  background: var(--gb-darkest) !important;
+  color: var(--gb-lightest) !important;
+  border-color: var(--gb-lightest) !important;
+}
+
+/* CARDS DOS POKÉMON */
+
+body.retro-mode .pokemon-card {
+  background: var(--gb-light) !important;
+  border: 4px solid var(--gb-darkest) !important;
+  border-radius: 0 !important;
+  box-shadow: 6px 6px 0 var(--gb-dark) !important;
+  color: var(--gb-darkest) !important;
+}
+
+body.retro-mode .pokemon-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 9px 9px 0 var(--gb-darkest) !important;
+}
+
+body.retro-mode .pokemon-card img {
+  image-rendering: pixelated;
+  filter: grayscale(1) contrast(1.5);
+  transform: none;
+}
+
+body.retro-mode .pokemon-card .title,
+body.retro-mode .pokemon-card .number,
+body.retro-mode .pokemon-card .atribute-title {
+  color: var(--gb-darkest) !important;
+}
+
+body.retro-mode .pokemon-card .tag {
+  background: var(--gb-dark) !important;
+  color: var(--gb-lightest) !important;
+  border-radius: 0 !important;
+  border: 2px solid var(--gb-darkest);
+}
+
+/* CAMPOS */
+
+body.retro-mode input,
+body.retro-mode select {
+  background: var(--gb-light) !important;
+  color: var(--gb-darkest) !important;
+  border: 3px solid var(--gb-darkest) !important;
+}
+
+/* CONTROLES DO HEADER */
+
+.theme-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .theme-controls {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .theme-controls .theme-toggle {
+    font-size: 11px;
+    padding: 8px;
+  }
+}
+
+
+/* ==========================================
+   TREINADORES - GAME BOY 1996
+========================================== */
+
+/* Card principal */
+body.retro-mode .trainers-column > .trainer-card,
+body.retro-mode .trainer-card {
+  background: #8bac0f !important;
+  border: 4px solid #0f380f !important;
+  border-radius: 0 !important;
+  box-shadow: 6px 6px 0 #306230 !important;
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+}
+
+/* Efeito ao passar o mouse */
+body.retro-mode .trainer-card:hover {
+  background: #9bbc0f !important;
+  border-color: #0f380f !important;
+  box-shadow: 8px 8px 0 #0f380f !important;
+  transform: translateY(-3px);
+}
+
+/* Card expandido */
+body.retro-mode .trainer-card.expanded {
+  background: #9bbc0f !important;
+  border-color: #0f380f !important;
+}
+
+/* Textos */
+body.retro-mode .trainer-card h2,
+body.retro-mode .trainer-card h3,
+body.retro-mode .trainer-card p,
+body.retro-mode .trainer-card span {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+}
+
+/* Imagem do treinador */
+body.retro-mode .trainer-card .img-trainer {
+  image-rendering: pixelated;
+  filter: grayscale(1) sepia(1) saturate(3)
+    hue-rotate(45deg) contrast(1.3);
+}
+
+/* Botões internos */
+body.retro-mode .trainer-card button {
+  background: #9bbc0f !important;
+  color: #0f380f !important;
+  border: 3px solid #0f380f !important;
+  border-radius: 0 !important;
+  box-shadow: 3px 3px 0 #306230 !important;
+  font-family: "Courier New", monospace !important;
+}
+
+/* Pokémon da equipe */
+body.retro-mode .trainer-card .trainer-pokemon {
+  background: #9bbc0f !important;
+  border: 2px solid #306230 !important;
+  border-radius: 0 !important;
+  color: #0f380f !important;
+}
+
+/* Sprites dos Pokémon da equipe */
+body.retro-mode .trainer-card .trainer-pokemon img {
+  image-rendering: pixelated;
+}
+
+/* Remove arredondamentos dos elementos internos */
+body.retro-mode .trainer-card .trainer-toggle,
+body.retro-mode .trainer-card .trainer-pokemon,
+body.retro-mode .trainer-card .trainer-pokemon-item {
+  border-radius: 0 !important;
+}
+
+/* Remove o círculo decorativo dos treinadores no modo retrô */
+
+body.retro-mode .trainer-card::before,
+body.retro-mode .trainer-card::after,
+body.retro-mode .trainer-toggle::before,
+body.retro-mode .trainer-toggle::after {
+  background: none !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+/* ==========================================
+   EQUIPE DOS TREINADORES - MODO RETRÔ
+========================================== */
+
+body.retro-mode .trainer-card .pokemon-card,
+body.retro-mode .trainer-card .trainer-pokemon,
+body.retro-mode .trainer-card .trainer-pokemon-item {
+  background: #9bbc0f !important;
+  background-image: none !important;
+  color: #0f380f !important;
+  border: 3px solid #306230 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Textos dentro da equipe */
+body.retro-mode .trainer-card .pokemon-card *,
+body.retro-mode .trainer-card .trainer-pokemon *,
+body.retro-mode .trainer-card .trainer-pokemon-item * {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+}
+
+/* Imagens com aparência pixelada */
+body.retro-mode .trainer-card .trainer-pokemon img,
+body.retro-mode .trainer-card .trainer-pokemon-item img {
+  image-rendering: pixelated;
+}
+
+/* Remove círculos e degradês decorativos */
+body.retro-mode .trainer-card .trainer-pokemon::before,
+body.retro-mode .trainer-card .trainer-pokemon-item::before {
+  display: none !important;
+}
+
+/* ==========================================
+   TREINADORES - CORREÇÕES RETRÔ
+========================================== */
+
+/* Card normal, hover e expandido */
+body.retro-mode .trainers-column > .trainer-card,
+body.retro-mode .trainers-column > .trainer-card:hover,
+body.retro-mode .trainers-column > .trainer-card.expanded {
+  background: #8bac0f !important;
+  background-image: none !important;
+  border: 4px solid #0f380f !important;
+  border-radius: 0 !important;
+  box-shadow: 6px 6px 0 #306230 !important;
+  color: #0f380f !important;
+}
+
+/* Remove os círculos com degradê */
+body.retro-mode .trainer-card .trainer-toggle::before,
+body.retro-mode .trainer-card .trainer-toggle::after {
+  display: none !important;
+}
+
+/* Imagem principal do treinador */
+body.retro-mode .trainer-card .img-trainer {
+  filter: grayscale(1) sepia(1) saturate(3)
+    hue-rotate(45deg) contrast(1.3);
+  image-rendering: pixelated;
+  box-shadow: none !important;
+}
+
+/* Área da equipe */
+body.retro-mode .trainer-card .trainer-details {
+  border-top: 3px solid #306230 !important;
+}
+
+body.retro-mode .trainer-card .trainer-details h3 {
+  color: #0f380f !important;
+}
+
+/* Cards pequenos dos Pokémon */
+body.retro-mode .trainer-card .trainer-pokemon-item,
+body.retro-mode .trainer-card .trainer-pokemon-item:hover {
+  background: #9bbc0f !important;
+  background-image: none !important;
+  border: 3px solid #306230 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: #0f380f !important;
+}
+
+/* Nome e número */
+body.retro-mode .trainer-card .trainer-pokemon-item span,
+body.retro-mode .trainer-card .trainer-pokemon-item small {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+}
+
+/* Sprites de Pokémon Red/Blue */
+body.retro-mode .trainer-card .retro-team-sprite {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: grayscale(1) sepia(1) saturate(3)
+    hue-rotate(45deg) contrast(1.3);
+}
+
+
+/* Logo no estilo Game Boy */
+
+body.retro-mode .logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: grayscale(1) sepia(1) saturate(3)
+    hue-rotate(45deg) contrast(1.3);
+}
+
+body.retro-mode .logo-img:hover {
+  transform: none;
+}
+
+/* ==========================================
+   ESTATÍSTICAS - CONTRASTE MODO RETRÔ
+========================================== */
+
+body.retro-mode .grid-atributtes,
+body.retro-mode .grid-atributtes span,
+body.retro-mode .grid-atributtes .atribute-title {
+  color: #0f380f !important;
+  font-weight: 700;
+  text-shadow: none !important;
+}
+body.retro-mode .atribute-title,
+body.retro-mode .attribute-title,
+body.retro-mode .stat-label,
+body.retro-mode .stat-name {
+  color: #0f380f !important;
+  text-shadow: none !important;
+}
+
+/* ==========================================
+   ESTATÍSTICAS DA PÁGINA DE DETALHES
+   MODO GAME BOY
+========================================== */
+
+/* Nomes: HP, Ataque, Defesa etc. */
+body.retro-mode #center > .pokemon-card .details-stat-name {
+  color: #0f380f !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+}
+
+/* Valores numéricos */
+body.retro-mode #center > .pokemon-card .details-stat-number {
+  color: #0f380f !important;
+  font-weight: 700 !important;
+}
+
+/* Título das estatísticas */
+body.retro-mode #center > .pokemon-card .details-stats-heading h2 {
+  color: #0f380f !important;
+}
+
+/* Textos complementares */
+body.retro-mode #center > .pokemon-card .details-stats-heading span,
+body.retro-mode #center > .pokemon-card .details-stats-caption {
+  color: #306230 !important;
+}
+
+/* Linha divisória */
+body.retro-mode #center > .pokemon-card .details-stats-heading {
+  border-top: 2px solid #306230 !important;
+}
+
+/* Fundo das barras */
+body.retro-mode #center > .pokemon-card .details-stat-track {
+  background: #306230 !important;
+  border-radius: 0 !important;
+}
+
+/* Preenchimento das barras */
+body.retro-mode #center > .pokemon-card .details-stat-progress {
+  background: #0f380f !important;
+  border-radius: 0 !important;
+}
+
+/* ==========================================
+   BOTÃO VER EQUIPE - MODO RETRÔ
+========================================== */
+
+body.retro-mode .trainer-card .trainer-expand-label {
+  background: #306230 !important;
+  color: #9bbc0f !important;
+
+  border: 3px solid #0f380f !important;
+  border-radius: 0 !important;
+
+  box-shadow: 4px 4px 0 #0f380f !important;
+
+  padding: 10px 16px;
+
+  font-family: "Courier New", monospace !important;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Seta do botão */
+body.retro-mode .trainer-card .trainer-expand-label span {
+  color: #9bbc0f !important;
+}
+
+/* Hover */
+body.retro-mode .trainer-card:hover .trainer-expand-label {
+  background: #0f380f !important;
+  color: #9bbc0f !important;
+  border-color: #0f380f !important;
+}
+
+/* Foco pelo teclado */
+body.retro-mode .trainer-card .trainer-toggle:focus-visible {
+  outline: 3px solid #0f380f !important;
+  outline-offset: 5px;
+}

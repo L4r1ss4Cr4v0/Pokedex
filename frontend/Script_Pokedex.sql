@@ -491,3 +491,19 @@ SELECT * FROM Types;
 SELECT * FROM Rel_Pokemon_Type; 
 SELECT * FROM Rel_Trainer_Pokemon; 
 
+CREATE TABLE Badges
+    (`ID_Badge` int not null, `Badge` varchar(20), `Type` varchar(12), `Leader` varchar(20), `City` varchar(20), PRIMARY KEY(ID_Badge))
+;
+
+INSERT INTO Badges (`ID_Badge`, `Badge`, `Type`, `Leader`, `City`)
+VALUES
+    (1, 'Rocha', 'Rock', 'Brock', 'Pewter'),
+    (2, 'Cascata', 'Water', 'Misty', 'Cerulean'),
+    (3, 'Trovão', 'Electric', 'Lt. Surge', 'Vermilion'),
+    (4, 'Arco-íris', 'Grass', 'Erika', 'Celadon'),
+    (5, 'Alma', 'Poison', 'Koga', 'Fuchsia'),
+    (6, 'Pântano', 'Psychic', 'Sabrina', 'Saffron'),
+    (7, 'Vulcão', 'Fire', 'Blaine', 'Cinnabar'),
+    (8, 'Terra', 'Ground', 'Giovanni', 'Viridian')
+;
+

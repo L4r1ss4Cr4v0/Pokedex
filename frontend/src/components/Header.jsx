@@ -89,6 +89,15 @@ function Header() {
             Treinadores
           </NavLink>
 
+          <NavLink
+            to="/badges"
+            className={({ isActive }) =>
+              isActive ? "nav-active" : ""
+            }
+          >
+            Insígnias
+          </NavLink>
+
         </nav>
 
         <div className="theme-controls">

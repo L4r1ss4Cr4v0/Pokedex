@@ -27,7 +27,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/auth/register", "/api/auth/login").permitAll()
                         .requestMatchers(HttpMethod.GET,
-                                "/api/pokemons/**", "/api/types/**", "/api/trainers/**").permitAll()
+                                "/api/pokemons/**", "/api/types/**", "/api/trainers/**", "/api/badges/**").permitAll()
                         .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth -> oauth
                         .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()))

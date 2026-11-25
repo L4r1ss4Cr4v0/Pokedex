@@ -1,10 +1,12 @@
 package com.pokedex.config;
 
+import com.pokedex.model.Badge;
 import com.pokedex.model.Pokemon;
 import com.pokedex.model.PokemonType;
 import com.pokedex.model.Stats;
 import com.pokedex.model.Trainer;
 import com.pokedex.model.TypeRef;
+import com.pokedex.repository.BadgeRepository;
 import com.pokedex.repository.PokemonRepository;
 import com.pokedex.repository.TrainerRepository;
 import com.pokedex.repository.TypeRepository;
@@ -31,17 +33,20 @@ public class DatabaseSeeder implements CommandLineRunner {
     private final PokemonRepository pokemonRepository;
     private final TypeRepository typeRepository;
     private final TrainerRepository trainerRepository;
+    private final BadgeRepository badgeRepository;
     private final Resource script;
     private final boolean enabled;
 
     public DatabaseSeeder(PokemonRepository pokemonRepository,
                           TypeRepository typeRepository,
                           TrainerRepository trainerRepository,
+                          BadgeRepository badgeRepository,
                           @Value("${app.seed.script}") Resource script,
                           @Value("${app.seed.enabled:true}") boolean enabled) {
         this.pokemonRepository = pokemonRepository;
         this.typeRepository = typeRepository;
         this.trainerRepository = trainerRepository;
+        this.badgeRepository = badgeRepository;
         this.script = script;
         this.enabled = enabled;
     }
@@ -73,7 +78,8 @@ public class DatabaseSeeder implements CommandLineRunner {
         boolean needsTypes = typeRepository.count() == 0;
         boolean needsPokemons = pokemonRepository.count() == 0;
         boolean needsTrainers = trainerRepository.count() == 0;
-        if (!needsTypes && !needsPokemons && !needsTrainers) {
+        boolean needsBadges = badgeRepository.count() == 0;
+        if (!needsTypes && !needsPokemons && !needsTrainers && !needsBadges) {
             log.info("Banco já populado; seed ignorado.");
             return;
         }
@@ -95,6 +101,9 @@ public class DatabaseSeeder implements CommandLineRunner {
         }
         if (needsTrainers) {
             importTrainers(tables);
+        }
+        if (needsBadges) {
+            importBadges(tables);
         }
     }
 
@@ -139,6 +148,14 @@ public class DatabaseSeeder implements CommandLineRunner {
         }
         trainerRepository.saveAll(trainers);
         log.info("{} treinadores importados.", trainers.size());
+    }
+
+    private void importBadges(Map<String, List<List<String>>> tables) {
+        List<Badge> badges = tables.getOrDefault("badges", List.of()).stream()
+                .map(row -> new Badge(Integer.parseInt(row.get(0)), row.get(1), row.get(2), row.get(3), row.get(4)))
+                .toList();
+        badgeRepository.saveAll(badges);
+        log.info("{} insígnias importadas.", badges.size());
     }
 
     private String readScript() throws IOException {

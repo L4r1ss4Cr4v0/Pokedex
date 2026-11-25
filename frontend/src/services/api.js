@@ -93,6 +93,13 @@ export const getPokemons = () => request("/pokemons");
 export const getPokemon = (id) => request(`/pokemons/${id}`);
 export const getTypes = () => request("/types");
 export const getTrainers = () => request("/trainers");
+export const getBadges = (search = "") => {
+  const query = search.trim()
+    ? `?${new URLSearchParams({ search: search.trim() })}`
+    : "";
+  return request(`/badges${query}`);
+};
+export const getBadge = (id) => request(`/badges/${id}`);
 
 export const createPokemon = (pokemon) =>
   request("/pokemons", { method: "POST", body: JSON.stringify(pokemon) });

@@ -6,6 +6,7 @@ import PokemonDetailsPage from "./pages/PokemonDetailsPage";
 import PokemonFormPage from "./pages/PokemonFormPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import BadgesPage from "./pages/BadgesPage";
 import RequireAuth from "./components/RequireAuth";
 
 import Header from "./components/Header"; 
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<PokemonHomePage />} />
         <Route path="/trainers" element={<TrainersPage />} />
+        <Route path="/badges" element={<BadgesPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route

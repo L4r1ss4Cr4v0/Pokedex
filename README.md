@@ -57,6 +57,7 @@ Na primeira execução, o backend lê o `Script_Pokedex.sql` (cópia em `backend
 | `pokemons` | 151 Pokémon, com `stats` e `types` embutidos no documento       |
 | `types`    | 18 tipos                                                        |
 | `trainers` | 12 treinadores, com `badges` e a lista `pokemonIds` da equipe   |
+| `badges`   | 8 insígnias com nome, tipo, líder e cidade                      |
 
 Exemplo de documento em `pokemons`:
 
@@ -104,6 +105,8 @@ O app abre em `http://localhost:5173`. Para usar outra URL de API, copie `fronte
 | `GET`    | `/api/auth/me`       | Dados do dono do token (exige token)                            |
 | `GET`    | `/api/types`         | Lista os tipos                                                  |
 | `GET`    | `/api/trainers`      | Lista os treinadores (`/api/trainers/{id}` busca um)            |
+| `GET`    | `/api/badges`        | Lista as insígnias (`?search=...` filtra por nome, tipo, líder ou cidade) |
+| `GET`    | `/api/badges/{id}`   | Busca uma insígnia pelo ID                                      |
 
 Corpo de exemplo para `POST`/`PUT` (no tipo basta informar o `id`):
 
@@ -123,7 +126,7 @@ Erros retornam JSON `{ status, message, errors? }`: `400` (dados inválidos), `4
 - **Senhas:** nunca são guardadas nem devolvidas em texto: o banco guarda só o hash **BCrypt**.
 - **Login:** `POST /api/auth/login` (público) recebe `username` e `password` e devolve um **token JWT** (`accessToken`, `tokenType`, `expiresIn` em segundos e os dados do `user`). Usuário ou senha errados retornam `401`, sem revelar qual dos dois falhou.
 - **Token:** assinado com HMAC-SHA256 e válido por 120 minutos (`JWT_EXPIRATION_MINUTES`). Leva o usuário (`sub`), o nome e a role. Nas requisições protegidas, envie `Authorization: Bearer <token>`.
-- **Leitura pública:** todos os `GET` (`/api/pokemons`, `/api/types`, `/api/trainers`) funcionam sem login.
+- **Leitura pública:** todos os `GET` (`/api/pokemons`, `/api/types`, `/api/trainers`, `/api/badges`) funcionam sem login.
 - **Escrita protegida:** `POST`, `PUT` e `DELETE` em `/api/pokemons` exigem um token válido; sem ele, ou com token inválido ou expirado, a API responde `401`.
 - `GET /api/auth/me` devolve `username`, `name` e `role` do dono do token.
 - **`JWT_SECRET`:** segredo de assinatura, com pelo menos 32 caracteres, definido no `backend/.env` (nunca no GitHub). Se faltar, a API gera um segredo temporário e os logins caem quando ela reiniciar.

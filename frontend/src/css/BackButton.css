@@ -1,0 +1,73 @@
+/* Botão de voltar (seta + "Voltar"), alinhado à esquerda */
+
+.back-button {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 16px 8px 12px;
+  border: 1px solid rgba(128, 128, 128, 0.35);
+  border-radius: 999px;
+  background: rgba(128, 128, 128, 0.12);
+  color: inherit;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.back-arrow {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.back-button:hover {
+  background: rgba(237, 49, 85, 0.14);
+  border-color: #ed3155;
+}
+
+.back-button:hover .back-arrow {
+  transform: translateX(-4px);
+}
+
+.back-button:focus-visible {
+  outline: 2px solid #ed3155;
+  outline-offset: 3px;
+}
+
+/* Telas sem o contêiner #center (ex.: treinadores) */
+.back-row {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 40px 0;
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .back-row {
+    padding: 16px 16px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-button,
+  .back-arrow {
+    transition: none;
+  }
+
+  .back-button:hover .back-arrow {
+    transform: none;
+  }
+}

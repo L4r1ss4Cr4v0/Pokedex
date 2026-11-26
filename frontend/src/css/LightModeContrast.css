@@ -1,0 +1,86 @@
+/* Ajustes de leitura do modo claro compartilhados entre as telas. */
+body.light-mode #root {
+  color: #1f2937;
+}
+
+body.light-mode #root :is(
+  .header .logo-text p,
+  .header-status,
+  .pokemon-card .number,
+  .pokemon-card .header-card,
+  .pokemon-card .grid-atributtes,
+  .pokemon-card .atribute-title,
+  .details-stats-heading > span,
+  .details-stat-name,
+  .details-stats-caption,
+  .trainer-number,
+  .trainer-summary,
+  .trainer-pokemon-item small,
+  .trainer-badge-info small,
+  .trainer-no-badges,
+  .badges-heading p,
+  .badges-count,
+  .badge-order,
+  .badge-facts dt,
+  .team-heading p,
+  .team-section-heading p,
+  .team-section-heading > span,
+  .team-favorite-number,
+  .team-member-number,
+  .team-empty p,
+  .team-login-card p,
+  .auth-subtitle,
+  .auth-hint
+) {
+  color: #4b5563 !important;
+}
+
+body.light-mode #root :is(
+  .pokemon-card .title,
+  .details-stats-heading h2,
+  .details-stat-number,
+  .trainer-name,
+  .trainer-details h3,
+  .trainer-pokemon-item span,
+  .trainer-badge-info strong,
+  .badge-card-info h2,
+  .badge-facts dd,
+  .team-heading h1,
+  .team-section-heading h2,
+  .team-member-info h3,
+  .team-favorite-name,
+  .team-empty h3,
+  .auth-card h2,
+  .editor-card h3
+) {
+  color: #1f2937 !important;
+}
+
+body.light-mode #root :is(input, select, textarea)::placeholder {
+  color: #596579 !important;
+  opacity: 1;
+}
+
+body.light-mode #root :is(
+  .header-nav a.nav-active,
+  .header-nav a:hover,
+  .team-favorite-name:hover,
+  .auth-password-toggle:hover,
+  .back-button:hover
+) {
+  color: #a61b35 !important;
+}
+
+body.light-mode #root :is(
+  .team-add-button:disabled,
+  .team-order-controls button:disabled,
+  .team-remove-button:disabled,
+  .pokemon-card button:disabled
+) {
+  color: #4b5563 !important;
+  opacity: 1;
+}
+
+body.light-mode #root .auth-error {
+  color: #991b1b !important;
+}

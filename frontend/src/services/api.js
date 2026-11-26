@@ -1,4 +1,6 @@
-const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8080/api";
+const API_URL = import.meta.env.DEV
+  ? "/api"
+  : (import.meta.env.VITE_API_URL ?? "http://localhost:18084/api");
 
 const TOKEN_KEY = "pokedex-token";
 const USER_KEY = "pokedex-user";
@@ -100,6 +102,12 @@ export const getBadges = (search = "") => {
   return request(`/badges${query}`);
 };
 export const getBadge = (id) => request(`/badges/${id}`);
+export const getPokemonCollection = () => request("/me/pokemon-collection");
+export const updatePokemonCollection = (collection) =>
+  request("/me/pokemon-collection", {
+    method: "PUT",
+    body: JSON.stringify(collection),
+  });
 
 export const createPokemon = (pokemon) =>
   request("/pokemons", { method: "POST", body: JSON.stringify(pokemon) });

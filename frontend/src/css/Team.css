@@ -1,0 +1,288 @@
+.team-page {
+  width: min(1180px, calc(100% - 40px));
+  margin: 36px auto 72px;
+  color: #f4f7fb;
+  text-align: left;
+}
+
+.team-heading,
+.team-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.team-heading { margin-bottom: 32px; }
+.team-heading h1 { margin: 4px 0 8px; font-size: clamp(30px, 4vw, 42px); line-height: 1.12; letter-spacing: -0.04em; }
+.team-heading p { margin: 0; color: #aebdc8; }
+.team-eyebrow { color: #79baff !important; font-size: 12px; font-weight: 800; letter-spacing: .13em; }
+.team-count { display: flex; align-items: baseline; gap: 8px; padding: 14px 18px; border: 1px solid #34414e; border-radius: 14px; background: #1c252e; white-space: nowrap; }
+.team-count strong { font-size: 26px; }
+.team-count span { color: #aebdc8; }
+.team-section { margin-top: 34px; padding: 24px; border: 1px solid #2b3744; border-radius: 18px; background: linear-gradient(145deg, rgba(28, 37, 46, .78), rgba(20, 28, 36, .62)); }
+.team-section-heading { margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid rgba(148, 163, 184, .13); }
+.team-section-heading h2 { margin: 0 0 5px; font-size: 22px; line-height: 1.2; }
+.team-section-heading p { margin: 0; color: #aebdc8; }
+.team-section-heading > span { color: #aebdc8; }
+.team-empty { padding: 36px 20px; text-align: center; border: 1px dashed #394755; border-radius: 16px; background: rgba(28, 37, 46, .65); }
+.team-empty > span { font-size: 32px; color: #79baff; }
+.team-empty h3 { margin: 10px 0 6px; }
+.team-empty p { margin: 0; color: #aebdc8; }
+.team-empty.compact { padding: 28px 20px; }
+.team-primary-link, .team-secondary-link { display: inline-flex; justify-content: center; margin: 16px 8px 0 0; padding: 10px 16px; border-radius: 9px; color: #fff; text-decoration: none; font-weight: 700; border: 0; cursor: pointer; font: inherit; }
+.team-primary-link { background: #287ac0; }
+.team-secondary-link { color: #c5d0db; background: #293540; }
+.team-favorites-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 14px; }
+.team-favorite-card { display: grid; grid-template-columns: 76px minmax(0, 1fr); align-items: center; gap: 14px; min-width: 0; min-height: 146px; padding: 16px; border: 1px solid color-mix(in srgb, var(--team-accent) 24%, #34414e); border-radius: 15px; background: radial-gradient(ellipse 62% 130% at 0% 50%, color-mix(in srgb, var(--team-accent) 10%, transparent), transparent 100%), #1c252e; transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+.team-favorite-card:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--team-accent) 55%, #34414e); box-shadow: 0 9px 20px rgba(0, 0, 0, .14); }
+.team-favorite-image { width: 76px; height: 76px; object-fit: contain; border-radius: 50%; background: color-mix(in srgb, var(--team-accent) 12%, transparent); filter: drop-shadow(0 7px 9px color-mix(in srgb, var(--team-accent) 24%, transparent)); }
+.team-favorite-info { min-width: 0; }
+.team-favorite-number { display: block; margin-bottom: 3px; color: #91a3b3; font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+.team-favorite-name { display: block; margin-bottom: 7px; color: #f4f7fb; font-size: 17px; font-weight: 750; line-height: 1.2; text-decoration: none; text-transform: capitalize; overflow-wrap: anywhere; }
+.team-favorite-name:hover { color: #9ed2ff; }
+.team-favorite-types { display: flex; flex-wrap: wrap; gap: 5px; }
+.team-favorite-types span { padding: 3px 7px; border: 1px solid color-mix(in srgb, var(--type-color) 42%, transparent); border-radius: 999px; background: color-mix(in srgb, var(--type-color) 15%, transparent); color: color-mix(in srgb, var(--type-color) 58%, white); font-size: 9px; font-weight: 700; line-height: 1.2; }
+.team-favorite-actions { display: flex; align-items: center; gap: 7px; margin-top: 11px; }
+.team-add-button { flex: 1; min-width: 0; min-height: 32px; padding: 0 9px; border: 1px solid rgba(121, 186, 255, .28); border-radius: 8px; color: #b9defc; background: rgba(59, 130, 190, .12); font-size: 10px; font-weight: 750; white-space: nowrap; }
+.team-add-button:hover:not(:disabled) { border-color: #79baff; background: rgba(59, 130, 190, .22); }
+.team-add-button:disabled { color: #7f8c98; border-color: #394550; background: rgba(72, 82, 92, .12); cursor: default; }
+.team-in-team-label { flex: 1; color: #9ed3ae; font-size: 11px; font-weight: 750; }
+.team-unfavorite-button { display: grid; flex: 0 0 32px; place-items: center; width: 32px; min-width: 32px; height: 32px; min-height: 32px; padding: 0; border: 1px solid rgba(255, 209, 102, .32); border-radius: 8px; color: #ffd166; background: rgba(8, 15, 20, .24); font-size: 17px; line-height: 1; }
+.team-unfavorite-button:hover:not(:disabled) { border-color: #ffd166; background: rgba(255, 209, 102, .12); }
+.team-unfavorite-button:disabled { opacity: .5; cursor: wait; }
+.team-roster { display: grid; gap: 11px; margin: 0; padding: 0; list-style: none; }
+.team-roster-item { display: grid; grid-template-columns: 38px minmax(0, 1fr); align-items: center; gap: 12px; }
+.team-position { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid #344657; border-radius: 12px; color: #9ed2ff; background: #202e3a; font-size: 12px; font-weight: 800; }
+.team-member-card { display: grid; grid-template-columns: 76px minmax(0, 1fr) auto; align-items: center; gap: 18px; min-width: 0; min-height: 112px; padding: 14px 18px; border: 1px solid color-mix(in srgb, var(--team-accent) 28%, #34414e); border-radius: 16px; background: radial-gradient(ellipse 46% 120% at 0% 50%, color-mix(in srgb, var(--team-accent) 12%, transparent), transparent 100%), linear-gradient(110deg, #202a33, #1a222b); transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+.team-member-card:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--team-accent) 65%, #34414e); box-shadow: 0 10px 22px rgba(0, 0, 0, .16); }
+.team-member-image { display: block; width: 72px; height: 72px; object-fit: contain; filter: drop-shadow(0 8px 12px color-mix(in srgb, var(--team-accent) 28%, transparent)); }
+.team-member-info { min-width: 0; }
+.team-member-number { color: #93a4b4; font-size: 10px; font-weight: 800; letter-spacing: .1em; }
+.team-member-info h3 { margin: 4px 0 8px; color: #f8fafc; font-size: 20px; line-height: 1.15; text-transform: capitalize; }
+.team-member-types { display: flex; flex-wrap: wrap; gap: 6px; }
+.team-member-types span { padding: 4px 9px; border: 1px solid color-mix(in srgb, var(--type-color) 48%, transparent); border-radius: 999px; background: color-mix(in srgb, var(--type-color) 18%, transparent); color: color-mix(in srgb, var(--type-color) 62%, white); font-size: 10px; font-weight: 700; line-height: 1.2; }
+.team-member-actions { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+.team-order-controls { display: flex; gap: 5px; }
+.team-order-controls button { display: grid; place-items: center; width: 34px; height: 34px; padding: 0; border: 1px solid #3b4a58; border-radius: 9px; color: #eaf3fb; background: #202a34; font-size: 17px; line-height: 1; }
+.team-order-controls button:hover:not(:disabled) { border-color: var(--team-accent); background: #2a3a47; }
+.team-order-controls button:disabled { opacity: .36; cursor: default; }
+.team-detail-link, .team-remove-button { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 0 11px; border: 1px solid #3b4a58; border-radius: 9px; color: #cbd8e4; background: rgba(8, 15, 20, .25); font-size: 11px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.team-detail-link:hover { border-color: #6bb6f5; color: #a9d8ff; }
+.team-remove-button { border-color: rgba(242, 123, 123, .25); color: #f29b9b; cursor: pointer; }
+.team-remove-button:hover:not(:disabled) { border-color: #ee7474; background: rgba(238, 116, 116, .1); }
+.team-remove-button:disabled { opacity: .5; cursor: wait; }
+.team-message, .team-error { padding: 12px 15px; border-radius: 10px; background: #202a34; }
+.team-error { color: #ffaaaa; }
+.team-login-card { max-width: 700px; margin: 72px auto; padding: 44px 40px; text-align: center; border: 1px solid #34414e; border-radius: 20px; background: #1c252e; }
+.team-login-card h1 { max-width: 100%; margin: 0 auto 16px; color: inherit; font-size: clamp(30px, 4vw, 40px); line-height: 1.12; letter-spacing: -0.04em; }
+.team-login-card p { max-width: 520px; margin: 0 auto; color: #aebdc8; line-height: 1.6; }
+
+.pokemon-card .favorite-toggle:disabled, .pokemon-card .team-toggle:disabled { opacity: .55; cursor: wait; }
+.pokemon-card .team-toggle { padding: 8px 10px; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; color: #e9f3fb; background: rgba(8,15,20,.45); font: inherit; font-size: 12px; cursor: pointer; }
+.pokemon-card .team-toggle.is-in-team { color: #99d3ae; border-color: rgba(153,211,174,.4); }
+body.light-mode .team-page { color: #243447; }
+body.light-mode .team-heading p, body.light-mode .team-section-heading p, body.light-mode .team-empty p { color: #617287; }
+body.light-mode .team-count, body.light-mode .team-empty, body.light-mode .team-login-card { background: #f3f6fa; border-color: #d1dbe6; }
+body.light-mode .team-section { background: linear-gradient(145deg, #f8fafc, #edf2f7); border-color: #d4dee8; }
+body.light-mode .team-section-heading { border-bottom-color: rgba(71, 85, 105, .16); }
+body.light-mode .team-position { color: #294763; background: #e6edf5; border-color: #ccd7e3; }
+body.light-mode .team-member-card { background: radial-gradient(ellipse 46% 120% at 0% 50%, color-mix(in srgb, var(--team-accent) 10%, transparent), transparent 100%), linear-gradient(110deg, #fff, #f1f5f9); border-color: color-mix(in srgb, var(--team-accent) 25%, #d4dee8); }
+body.light-mode .team-member-info h3 { color: #243447; }
+body.light-mode .team-member-number { color: #66788d; }
+body.light-mode .team-order-controls button, body.light-mode .team-detail-link { color: #294763; background: #f8fafc; border-color: #ccd7e3; }
+body.light-mode .team-remove-button { color: #ae4f4f; background: #fff8f8; border-color: #efd0d0; }
+body.light-mode .team-favorite-card { background: radial-gradient(ellipse 62% 130% at 0% 50%, color-mix(in srgb, var(--team-accent) 9%, transparent), transparent 100%), #f8fafc; border-color: color-mix(in srgb, var(--team-accent) 22%, #d4dee8); }
+body.light-mode .team-favorite-name { color: #243447; }
+body.light-mode .team-favorite-number { color: #66788d; }
+body.light-mode .team-add-button { color: #24649a; background: rgba(59, 130, 190, .08); border-color: rgba(59, 130, 190, .26); }
+body.light-mode .team-add-button:disabled { color: #8995a1; background: #edf1f5; border-color: #d5dde5; }
+body.light-mode .team-unfavorite-button { background: #fffaf0; }
+body.light-mode .pokemon-card .team-toggle { color: #294763; background: rgba(255,255,255,.8); border-color: #d1dbe6; }
+@media (max-width: 640px) {
+  .team-page { width: min(100% - 24px, 1180px); margin-top: 24px; }
+  .team-heading { align-items: flex-start; }
+  .team-login-card { margin: 36px auto; padding: 32px 22px; }
+  .team-login-card h1 { font-size: 30px; line-height: 1.15; }
+  .team-count { padding: 10px 12px; }
+  .team-section { padding: 17px 14px; border-radius: 15px; }
+  .team-roster-item { grid-template-columns: 30px minmax(0, 1fr); gap: 8px; }
+  .team-position { width: 28px; height: 30px; border-radius: 9px; font-size: 10px; }
+  .team-member-card { grid-template-columns: 56px minmax(0, 1fr); gap: 8px 12px; padding: 12px; }
+  .team-member-image { width: 54px; height: 54px; }
+  .team-member-info h3 { font-size: 17px; }
+  .team-member-actions { grid-column: 1 / -1; justify-content: flex-end; flex-wrap: wrap; }
+  .team-order-controls button { width: 32px; height: 32px; }
+  .team-detail-link, .team-remove-button { min-height: 32px; }
+  .team-favorites-grid { grid-template-columns: repeat(auto-fill, minmax(235px, 1fr)); gap: 10px; }
+  .team-favorite-card { grid-template-columns: 62px minmax(0, 1fr); gap: 11px; min-height: 132px; padding: 12px; }
+  .team-favorite-image { width: 62px; height: 62px; }
+  .team-favorite-name { font-size: 16px; }
+}
+
+@media (max-width: 460px) {
+  .team-favorites-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Modo Volta no Tempo: paleta única de LCD Game Boy para toda a página */
+body.retro-mode .team-page {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+}
+
+body.retro-mode .team-page .team-heading h1,
+body.retro-mode .team-page .team-section-heading h2,
+body.retro-mode .team-page .team-empty h3,
+body.retro-mode .team-page .team-login-card h1 {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+  text-transform: uppercase;
+}
+
+body.retro-mode .team-page .team-eyebrow,
+body.retro-mode .team-page .team-heading p,
+body.retro-mode .team-page .team-section-heading p,
+body.retro-mode .team-page .team-section-heading > span,
+body.retro-mode .team-page .team-empty p,
+body.retro-mode .team-page .team-login-card p {
+  color: #306230 !important;
+  font-family: "Courier New", monospace !important;
+}
+
+body.retro-mode .team-page .team-count,
+body.retro-mode .team-page .team-section,
+body.retro-mode .team-page .team-empty,
+body.retro-mode .team-page .team-login-card,
+body.retro-mode .team-page .team-message,
+body.retro-mode .team-page .team-error {
+  border: 3px solid #0f380f !important;
+  border-radius: 0 !important;
+  background: #8bac0f !important;
+  box-shadow: 5px 5px 0 #306230 !important;
+  color: #0f380f !important;
+}
+
+body.retro-mode .team-page .team-count {
+  padding: 10px 14px;
+}
+
+body.retro-mode .team-page .team-count strong,
+body.retro-mode .team-page .team-count span,
+body.retro-mode .team-page .team-error {
+  color: #0f380f !important;
+}
+
+body.retro-mode .team-page .team-section-heading {
+  border-bottom: 2px dashed #306230 !important;
+}
+
+body.retro-mode .team-page .team-position {
+  border: 2px solid #0f380f !important;
+  border-radius: 0 !important;
+  background: #306230 !important;
+  color: #9bbc0f !important;
+  box-shadow: 3px 3px 0 #0f380f;
+  font-family: "Courier New", monospace !important;
+}
+
+body.retro-mode .team-page .team-member-card,
+body.retro-mode .team-page .team-favorite-card {
+  border: 3px solid #306230 !important;
+  border-radius: 0 !important;
+  background: #9bbc0f !important;
+  box-shadow: 4px 4px 0 #306230 !important;
+  color: #0f380f !important;
+  transition: transform .15s steps(2), box-shadow .15s steps(2);
+}
+
+body.retro-mode .team-page .team-member-card:hover,
+body.retro-mode .team-page .team-favorite-card:hover {
+  transform: translate(-2px, -2px);
+  border-color: #0f380f !important;
+  background: #9bbc0f !important;
+  box-shadow: 6px 6px 0 #0f380f !important;
+}
+
+body.retro-mode .team-page .team-member-image,
+body.retro-mode .team-page .team-favorite-image {
+  border-radius: 0 !important;
+  background: transparent !important;
+  filter: grayscale(1) sepia(1) saturate(3) hue-rotate(45deg) contrast(1.3) !important;
+  image-rendering: pixelated;
+}
+
+body.retro-mode .team-page .team-member-number,
+body.retro-mode .team-page .team-favorite-number {
+  color: #306230 !important;
+  font-family: "Courier New", monospace !important;
+}
+
+body.retro-mode .team-page .team-member-info h3,
+body.retro-mode .team-page .team-favorite-name {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+  text-transform: uppercase;
+}
+
+body.retro-mode .team-page .team-member-types span,
+body.retro-mode .team-page .team-favorite-types span {
+  border: 2px solid #306230 !important;
+  border-radius: 0 !important;
+  background: #9bbc0f !important;
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+  text-transform: uppercase;
+}
+
+body.retro-mode .team-page .team-order-controls button,
+body.retro-mode .team-page .team-detail-link,
+body.retro-mode .team-page .team-remove-button,
+body.retro-mode .team-page .team-add-button,
+body.retro-mode .team-page .team-unfavorite-button,
+body.retro-mode .team-page .team-primary-link,
+body.retro-mode .team-page .team-secondary-link {
+  min-height: 34px;
+  border: 2px solid #0f380f !important;
+  border-radius: 0 !important;
+  background: #306230 !important;
+  box-shadow: 3px 3px 0 #0f380f;
+  color: #9bbc0f !important;
+  font-family: "Courier New", monospace !important;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+body.retro-mode .team-page .team-order-controls button {
+  width: 34px;
+  padding: 0;
+}
+
+body.retro-mode .team-page .team-order-controls button:hover:not(:disabled),
+body.retro-mode .team-page .team-detail-link:hover,
+body.retro-mode .team-page .team-remove-button:hover:not(:disabled),
+body.retro-mode .team-page .team-add-button:hover:not(:disabled),
+body.retro-mode .team-page .team-unfavorite-button:hover:not(:disabled),
+body.retro-mode .team-page .team-primary-link:hover,
+body.retro-mode .team-page .team-secondary-link:hover {
+  background: #0f380f !important;
+  color: #9bbc0f !important;
+}
+
+body.retro-mode .team-page .team-order-controls button:disabled,
+body.retro-mode .team-page .team-add-button:disabled,
+body.retro-mode .team-page .team-remove-button:disabled {
+  border-color: #0f380f !important;
+  background: #306230 !important;
+  box-shadow: none;
+  color: #9bbc0f !important;
+  opacity: .65;
+}
+
+body.retro-mode .team-page .team-in-team-label {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+  font-weight: 700;
+  text-transform: uppercase;
+}

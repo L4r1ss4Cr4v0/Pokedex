@@ -433,3 +433,247 @@ body.retro-mode .trainer-card .trainer-toggle:focus-visible {
   outline: 3px solid #0f380f !important;
   outline-offset: 5px;
 }
+
+/* Detalhes da equipe e insígnias no estilo da tela LCD do Game Boy */
+body.retro-mode .trainer-card .trainer-details {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 3px dashed #306230 !important;
+}
+
+body.retro-mode .trainer-card .trainer-details > h3,
+body.retro-mode .trainer-card .trainer-badges h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 8px 10px;
+  border: 2px solid #306230;
+  background: #306230;
+  color: #9bbc0f !important;
+  font-size: 13px;
+  line-height: 1.3;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+body.retro-mode .trainer-card .trainer-badges {
+  margin-bottom: 18px;
+}
+
+body.retro-mode .trainer-card .trainer-badges h3 span {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 4px;
+  border: 2px solid #0f380f;
+  border-radius: 0;
+  background: #9bbc0f;
+  color: #0f380f !important;
+  font-size: 11px;
+}
+
+body.retro-mode .trainer-card .trainer-badge-list,
+body.retro-mode .trainer-card .trainer-pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+body.retro-mode .trainer-card .trainer-badge-item {
+  min-width: 0;
+  padding: 8px;
+  border: 2px solid #306230;
+  border-radius: 0;
+  background: #9bbc0f;
+  box-shadow: 3px 3px 0 #306230;
+}
+
+body.retro-mode .trainer-card .trainer-badge-mark {
+  flex-basis: 34px;
+  width: 34px;
+  height: 34px;
+  border: 2px solid #0f380f;
+  border-radius: 0;
+  background: #9bbc0f;
+  color: #0f380f !important;
+  font-size: 11px;
+  image-rendering: pixelated;
+}
+
+body.retro-mode .trainer-card .trainer-badge-info strong,
+body.retro-mode .trainer-card .trainer-badge-info small,
+body.retro-mode .trainer-card .trainer-no-badges {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+}
+
+body.retro-mode .trainer-card .trainer-badge-info strong {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+body.retro-mode .trainer-card .trainer-badge-info small {
+  font-size: 10px;
+}
+
+body.retro-mode .trainer-card .trainer-pokemon-item,
+body.retro-mode .trainer-card .trainer-pokemon-item:hover {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  justify-items: start;
+  align-content: center;
+  column-gap: 10px;
+  row-gap: 3px;
+  min-height: 78px;
+  padding: 7px 9px;
+  border: 2px solid #306230 !important;
+  border-radius: 0 !important;
+  background: #9bbc0f !important;
+  box-shadow: 3px 3px 0 #306230 !important;
+  transform: none;
+}
+
+body.retro-mode .trainer-card .trainer-pokemon-item img {
+  grid-row: 1 / 3;
+  width: 60px;
+  height: 60px;
+  image-rendering: pixelated;
+  filter: grayscale(1) sepia(1) saturate(3) hue-rotate(45deg) contrast(1.3);
+}
+
+body.retro-mode .trainer-card .trainer-pokemon-item span {
+  align-self: end;
+  color: #0f380f !important;
+  font-size: 12px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+body.retro-mode .trainer-card .trainer-pokemon-item small {
+  align-self: start;
+  color: #306230 !important;
+  font-size: 10px;
+}
+
+body.retro-mode .trainer-card .trainer-pokemon-item:hover {
+  border-color: #0f380f !important;
+  background: #9bbc0f !important;
+  box-shadow: 3px 3px 0 #0f380f !important;
+}
+
+@media (max-width: 600px) {
+  body.retro-mode .trainer-card .trainer-pokemon-grid,
+  body.retro-mode .trainer-card .trainer-badge-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Componentes compartilhados: manter o tema nas demais telas também */
+body.retro-mode .back-button,
+body.retro-mode .pokemon-form,
+body.retro-mode .auth-card,
+body.retro-mode .pokemon-editor,
+body.retro-mode .editor-card {
+  border: 3px solid #0f380f !important;
+  border-radius: 0 !important;
+  background: #8bac0f !important;
+  box-shadow: 5px 5px 0 #306230 !important;
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+}
+
+body.retro-mode .back-button:hover,
+body.retro-mode .editor-save:hover:not(:disabled),
+body.retro-mode .editor-cancel:hover:not(:disabled),
+body.retro-mode .auth-submit:hover:not(:disabled),
+body.retro-mode .btn:hover:not(:disabled) {
+  background: #0f380f !important;
+  color: #9bbc0f !important;
+  border-color: #0f380f !important;
+}
+
+body.retro-mode .back-button:focus-visible,
+body.retro-mode .editor-save:focus-visible,
+body.retro-mode .editor-cancel:focus-visible,
+body.retro-mode .auth-submit:focus-visible,
+body.retro-mode .btn:focus-visible {
+  outline: 3px solid #0f380f !important;
+  outline-offset: 3px;
+}
+
+body.retro-mode .status-message,
+body.retro-mode .status-error {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+}
+
+body.retro-mode .status-error {
+  padding: 10px 12px;
+  border: 2px solid #0f380f;
+  background: #9bbc0f;
+}
+
+body.retro-mode .pokemon-form input,
+body.retro-mode .pokemon-form select,
+body.retro-mode .pokemon-form textarea,
+body.retro-mode .auth-card input,
+body.retro-mode .pokemon-editor input,
+body.retro-mode .pokemon-editor select,
+body.retro-mode .pokemon-editor textarea {
+  border: 2px solid #0f380f !important;
+  border-radius: 0 !important;
+  background: #9bbc0f !important;
+  color: #0f380f !important;
+  box-shadow: none !important;
+  font-family: "Courier New", monospace !important;
+}
+
+body.retro-mode .pokemon-form input::placeholder,
+body.retro-mode .auth-card input::placeholder,
+body.retro-mode .pokemon-editor input::placeholder,
+body.retro-mode .pokemon-editor textarea::placeholder {
+  color: #306230 !important;
+}
+
+body.retro-mode .btn,
+body.retro-mode .editor-save,
+body.retro-mode .editor-cancel,
+body.retro-mode .auth-submit,
+body.retro-mode .variant-toggle button,
+body.retro-mode .type-chip {
+  border: 2px solid #0f380f !important;
+  border-radius: 0 !important;
+  background: #306230 !important;
+  box-shadow: 3px 3px 0 #0f380f;
+  color: #9bbc0f !important;
+  font-family: "Courier New", monospace !important;
+}
+
+body.retro-mode .btn-primary,
+body.retro-mode .btn-danger {
+  background: #306230 !important;
+  border-color: #0f380f !important;
+  color: #9bbc0f !important;
+}
+
+body.retro-mode .btn:disabled,
+body.retro-mode .editor-save:disabled,
+body.retro-mode .auth-submit:disabled {
+  background: #306230 !important;
+  box-shadow: none;
+  color: #9bbc0f !important;
+}
+
+body.retro-mode .editor-card h1,
+body.retro-mode .editor-card h2,
+body.retro-mode .auth-card h1,
+body.retro-mode .auth-card h2,
+body.retro-mode .pokemon-form h1,
+body.retro-mode .pokemon-form h2 {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+  text-transform: uppercase;
+}

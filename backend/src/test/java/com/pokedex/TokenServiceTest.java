@@ -11,8 +11,12 @@ import com.pokedex.service.TokenService;
 import java.time.Instant;
 import javax.crypto.SecretKey;
 import org.junit.jupiter.api.Test;
+import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
 import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
+import org.springframework.security.oauth2.jwt.JwsHeader;
 import org.springframework.security.oauth2.jwt.JwtException;
 
 class TokenServiceTest {
@@ -56,7 +60,16 @@ class TokenServiceTest {
 
     @Test
     void expiredTokenIsRejected() {
-        String expired = new TokenService(config.jwtEncoder(key), -5).issue(ana()).accessToken();
+        Instant issuedAt = Instant.now().minusSeconds(600);
+        String expired = config.jwtEncoder(key).encode(JwtEncoderParameters.from(
+                JwsHeader.with(MacAlgorithm.HS256).build(),
+                JwtClaimsSet.builder()
+                        .issuer("pokedex-api")
+                        .issuedAt(issuedAt)
+                        .expiresAt(issuedAt.plusSeconds(300))
+                        .subject("ana")
+                        .build()))
+                .getTokenValue();
 
         assertThrows(JwtException.class, () -> decoder.decode(expired));
     }

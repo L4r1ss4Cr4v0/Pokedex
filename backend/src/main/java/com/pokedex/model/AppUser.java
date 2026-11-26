@@ -1,6 +1,8 @@
 package com.pokedex.model;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,6 +19,8 @@ public class AppUser {
     private String passwordHash;
     private String role;
     private Instant createdAt;
+    private List<Integer> favoritePokemonIds = new ArrayList<>();
+    private List<Integer> teamPokemonIds = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -64,5 +68,21 @@ public class AppUser {
 
     public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public List<Integer> getFavoritePokemonIds() {
+        return favoritePokemonIds;
+    }
+
+    public void setFavoritePokemonIds(List<Integer> favoritePokemonIds) {
+        this.favoritePokemonIds = favoritePokemonIds;
+    }
+
+    public List<Integer> getTeamPokemonIds() {
+        return teamPokemonIds;
+    }
+
+    public void setTeamPokemonIds(List<Integer> teamPokemonIds) {
+        this.teamPokemonIds = teamPokemonIds;
     }
 }

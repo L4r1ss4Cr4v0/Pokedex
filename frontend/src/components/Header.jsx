@@ -98,6 +98,15 @@ function Header() {
             Insígnias
           </NavLink>
 
+          <NavLink
+            to="/team"
+            className={({ isActive }) =>
+              isActive ? "nav-active" : ""
+            }
+          >
+            Minha equipe
+          </NavLink>
+
         </nav>
 
         <div className="theme-controls">

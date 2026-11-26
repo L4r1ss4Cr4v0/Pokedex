@@ -7,6 +7,7 @@ import { useRetroMode } from "../hooks/useRetroMode";
 import { getPokemonImageUrl } from "../services/pokemonImage";
 import { colorTypes } from "../constants/colorTypes";
 import StatsBar from "../components/StatsBar";
+import { usePokemonCollection } from "../contexts/PokemonCollectionContext";
 
 import "../css/StatsBar.css";
 import "../css/PokemonDetails.css";
@@ -16,6 +17,7 @@ export default function PokemonDetailsPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
+  const collection = usePokemonCollection();
   const isRetro = useRetroMode();
 
   const [result, setResult] = useState({ id: null, pokemon: null, error: "" });
@@ -114,6 +116,32 @@ export default function PokemonDetailsPage() {
         <StatsBar stats={pokemon.stats} />
 
         {error && <p className="status-message status-error">{error}</p>}
+
+        <div className="actions-row">
+          {isLoggedIn ? (
+            <>
+              <button
+                type="button"
+                className="btn btn-primary"
+                disabled={collection.saving || collection.loading}
+                onClick={() => collection.toggleFavorite(pokemon.id)}
+              >
+                {collection.isFavorite(pokemon.id) ? "★ Favoritado" : "☆ Favoritar"}
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                disabled={collection.saving || collection.loading || (!collection.isInTeam(pokemon.id) && collection.teamPokemonIds.length >= 6)}
+                onClick={() => collection.toggleTeam(pokemon.id)}
+              >
+                {collection.isInTeam(pokemon.id) ? "Remover da equipe" : "Adicionar à equipe"}
+              </button>
+            </>
+          ) : (
+            <Link to="/login" className="btn btn-primary">Entre para favoritar</Link>
+          )}
+        </div>
+        {collection.error && <p className="status-message status-error">{collection.error}</p>}
 
         {isLoggedIn && (
           <div className="actions-row">

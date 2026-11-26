@@ -11,6 +11,7 @@ Para configuração completa do MongoDB, backend, autenticação e execução da
 - Cadastro, edição, exclusão e envio de imagens (requer login).
 - Páginas de treinadores e equipes.
 - Aba de insígnias com busca por nome, tipo, líder ou cidade.
+- Favoritos por conta e equipe pessoal com até seis Pokémon, ordem editável e salvamento no MongoDB.
 - Temas claro, escuro e retrô; layout responsivo.
 
 ## Rotas da interface
@@ -23,11 +24,12 @@ Para configuração completa do MongoDB, backend, autenticação e execução da
 | `/pokemon/:id/edit` | Edição (requer login) |
 | `/trainers` | Treinadores e equipes |
 | `/badges` | Insígnias de Kanto e busca |
+| `/team` | Favoritos e equipe pessoal (requer login) |
 | `/login`, `/register` | Autenticação |
 
 ## Executar
 
-Requisitos: Node.js e npm. Com o backend já configurado e rodando em `http://localhost:8080`:
+Requisitos: Node.js e npm. Com o backend já configurado e rodando em `http://localhost:18084`:
 
 ```powershell
 cd frontend

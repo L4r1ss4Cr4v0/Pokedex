@@ -79,7 +79,7 @@ cd backend
 mvn spring-boot:run
 ```
 
-A API sobe em `http://localhost:8080`. Testes: `mvn test`.
+A API sobe em `http://localhost:18084`. Testes: `mvn test`.
 
 **Frontend** (Node.js):
 
@@ -89,7 +89,7 @@ npm install
 npm run dev
 ```
 
-O app abre em `http://localhost:5173`. Para usar outra URL de API, copie `frontend/.env.example` para `frontend/.env` e ajuste `VITE_API_URL`.
+O app abre no endereço informado pelo Vite (normalmente `http://localhost:5173`). Para usar outra URL de API, copie `frontend/.env.example` para `frontend/.env` e ajuste `VITE_API_URL`.
 
 ### 🌐 Endpoints
 
@@ -107,6 +107,10 @@ O app abre em `http://localhost:5173`. Para usar outra URL de API, copie `fronte
 | `GET`    | `/api/trainers`      | Lista os treinadores (`/api/trainers/{id}` busca um)            |
 | `GET`    | `/api/badges`        | Lista as insígnias (`?search=...` filtra por nome, tipo, líder ou cidade) |
 | `GET`    | `/api/badges/{id}`   | Busca uma insígnia pelo ID                                      |
+| `GET`    | `/api/me/pokemon-collection` | Consulta favoritos e equipe da conta autenticada |
+| `PUT`    | `/api/me/pokemon-collection` | Atualiza favoritos e equipe (até seis Pokémon) |
+
+Cada conta mantém seus favoritos e a própria equipe na coleção `users`. A equipe aceita até seis Pokémon e sua ordem é preservada, permitindo reorganizar os integrantes pela interface.
 
 Corpo de exemplo para `POST`/`PUT` (no tipo basta informar o `id`):
 
@@ -137,15 +141,15 @@ Exemplos com `curl` (Linux, macOS ou Git Bash):
 
 ```bash
 # Criar conta
-curl -X POST http://localhost:8080/api/auth/register -H "Content-Type: application/json" \
+curl -X POST http://localhost:18084/api/auth/register -H "Content-Type: application/json" \
   -d '{"name":"Ana Souza","username":"ana","password":"segredo1"}'
 
 # Entrar e obter o token
-curl -X POST http://localhost:8080/api/auth/login -H "Content-Type: application/json" \
+curl -X POST http://localhost:18084/api/auth/login -H "Content-Type: application/json" \
   -d '{"username":"ana","password":"segredo1"}'
 
 # Excluir um Pokémon (exige o token)
-curl -X DELETE http://localhost:8080/api/pokemons/152 -H "Authorization: Bearer <accessToken>"
+curl -X DELETE http://localhost:18084/api/pokemons/152 -H "Authorization: Bearer <accessToken>"
 ```
 
 ### 🖼️ Fotos dos Pokémon (normal e modo retrô)
@@ -173,7 +177,7 @@ Endpoints (`{variant}` é `normal` ou `retro`):
 Exemplo:
 
 ```bash
-curl -X PUT http://localhost:8080/api/pokemons/152/image/retro \
+curl -X PUT http://localhost:18084/api/pokemons/152/image/retro \
   -H "Authorization: Bearer <accessToken>" -F "file=@sprite.png"
 ```
 

@@ -329,6 +329,97 @@
   font-weight: 700;
 }
 
+.trainer-card .trainer-badges {
+  margin-bottom: 24px;
+}
+
+.trainer-card .trainer-badges h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trainer-card .trainer-badges h3 span {
+  display: inline-grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: rgba(239, 64, 80, 0.16);
+  color: #ff929a;
+  font-size: 12px;
+}
+
+.trainer-card .trainer-badge-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.trainer-card .trainer-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid #3a4b5c;
+  border-radius: 12px;
+  background: rgba(41, 56, 71, 0.72);
+}
+
+.trainer-card .trainer-badge-mark {
+  display: grid;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--badge-accent) 55%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--badge-accent) 18%, #1b242e);
+  color: var(--badge-accent);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.trainer-card .badge-type-rock { --badge-accent: #c7a77b; }
+.trainer-card .badge-type-water { --badge-accent: #69b8f5; }
+.trainer-card .badge-type-electric { --badge-accent: #f2cf55; }
+.trainer-card .badge-type-grass { --badge-accent: #83cf69; }
+.trainer-card .badge-type-poison { --badge-accent: #c56acb; }
+.trainer-card .badge-type-psychic { --badge-accent: #ed7191; }
+.trainer-card .badge-type-fire { --badge-accent: #f28b57; }
+.trainer-card .badge-type-ground { --badge-accent: #d8bd72; }
+
+.trainer-card .trainer-badge-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.trainer-card .trainer-badge-info strong {
+  overflow: hidden;
+  color: #f8fafc;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trainer-card .trainer-badge-info small {
+  overflow: hidden;
+  color: #a1b0c2;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trainer-card .trainer-no-badges {
+  margin: 0;
+  color: #a1b0c2;
+  font-size: 13px;
+}
+
 /* ==========================================
    EQUIPE POKÉMON
 ========================================== */
@@ -441,6 +532,10 @@
     width: 75px;
     height: 75px;
   }
+
+  .trainer-card .trainer-badge-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ==========================================
@@ -547,5 +642,19 @@ body.light-mode .trainer-card .trainer-pokemon-item span {
 }
 
 body.light-mode .trainer-card .trainer-pokemon-item small {
+  color: #66788d;
+}
+
+body.light-mode .trainer-card .trainer-badge-item {
+  background: #f0f6fc;
+  border-color: #d5e4f0;
+}
+
+body.light-mode .trainer-card .trainer-badge-info strong {
+  color: #243447;
+}
+
+body.light-mode .trainer-card .trainer-badge-info small,
+body.light-mode .trainer-card .trainer-no-badges {
   color: #66788d;
 }

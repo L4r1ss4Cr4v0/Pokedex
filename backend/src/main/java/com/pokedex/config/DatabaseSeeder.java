@@ -140,14 +140,27 @@ public class DatabaseSeeder implements CommandLineRunner {
                     .add(Integer.parseInt(row.get(1)));
         }
 
+        Map<Integer, List<Integer>> badgesByTrainer = new TreeMap<>();
+        for (List<String> row : tables.getOrDefault("rel_trainer_badge", List.of())) {
+            badgesByTrainer.computeIfAbsent(Integer.parseInt(row.get(0)), k -> new ArrayList<>())
+                    .add(Integer.parseInt(row.get(1)));
+        }
+
         List<Trainer> trainers = new ArrayList<>();
         for (List<String> row : tables.getOrDefault("trainers", List.of())) {
             int id = Integer.parseInt(row.get(0));
-            trainers.add(new Trainer(id, row.get(1), Integer.parseInt(row.get(2)),
+            int badgeCount = Integer.parseInt(row.get(2));
+            List<Integer> badgeIds = badgesByTrainer.getOrDefault(id, legacyBadgeIds(badgeCount));
+            trainers.add(new Trainer(id, row.get(1), badgeCount, badgeIds,
                     teams.getOrDefault(id, List.of())));
         }
         trainerRepository.saveAll(trainers);
         log.info("{} treinadores importados.", trainers.size());
+    }
+
+    private static List<Integer> legacyBadgeIds(int count) {
+        return java.util.stream.IntStream.rangeClosed(1, Math.min(Math.max(count, 0), 8))
+                .boxed().toList();
     }
 
     private void importBadges(Map<String, List<List<String>>> tables) {

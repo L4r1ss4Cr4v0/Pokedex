@@ -59,9 +59,15 @@
 ========================================== */
 
 .pokemon-card .header-card {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  left: 20px;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: auto;
   margin: 0;
   padding: 0;
 }
@@ -71,6 +77,35 @@
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.5px;
+}
+
+.pokemon-card .favorite-toggle {
+  display: grid;
+  flex: 0 0 36px;
+  place-items: center;
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  min-height: 36px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  background: rgba(8, 15, 20, 0.55);
+  color: #c6d0d9;
+  font-family: inherit;
+  font-size: 23px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.pokemon-card .favorite-toggle.is-favorite {
+  color: #ffd166;
+  border-color: rgba(255, 209, 102, 0.45);
+}
+
+.pokemon-card .favorite-toggle:focus-visible {
+  outline: 2px solid var(--pokemon-color);
+  outline-offset: 3px;
 }
 
 /* ==========================================
@@ -305,6 +340,17 @@ body.light-mode .pokemon-card .number {
   color: #66788d;
 }
 
+body.light-mode .pokemon-card .favorite-toggle {
+  background: rgba(255, 255, 255, 0.82);
+  color: #526579;
+  border-color: #d2dce8;
+}
+
+body.light-mode .pokemon-card .favorite-toggle.is-favorite {
+  color: #a66b00;
+  border-color: rgba(166, 107, 0, 0.35);
+}
+
 body.light-mode .pokemon-card .title {
   color: #243447;
 }
@@ -374,6 +420,14 @@ body.light-mode .pokemon-card .atribute-title {
 
   .pokemon-card .title {
     font-size: 18px;
+  }
+
+  .pokemon-card .favorite-toggle {
+    flex-basis: 34px;
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+    min-height: 34px;
   }
 
   .pokemon-card .link-btn {

@@ -89,10 +89,114 @@ body.light-mode .badge-facts dt { color: #66788d; }
 body.light-mode .badge-facts dd { color: #34465a; }
 body.light-mode .badges-empty { color: #526579; }
 
-body.retro-mode .badges-page { font-family: "Courier New", monospace; }
-body.retro-mode .badge-card { border-style: dashed; background: #17251b; }
-body.retro-mode .badge-search { border-radius: 2px; border-color: #9b8a5c; background: #102016; }
-body.retro-mode .badge-card-info h2 { font-family: "Courier New", monospace; }
+body.retro-mode .badges-page {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+}
+
+body.retro-mode .badges-heading h1,
+body.retro-mode .badges-heading p,
+body.retro-mode .badges-eyebrow,
+body.retro-mode .badges-count,
+body.retro-mode .badges-empty {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+}
+
+body.retro-mode .badges-eyebrow,
+body.retro-mode .badge-order {
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+body.retro-mode .badge-search {
+  height: 48px;
+  border: 3px solid #0f380f !important;
+  border-radius: 0 !important;
+  background: #9bbc0f !important;
+  box-shadow: 4px 4px 0 #306230;
+  color: #0f380f !important;
+}
+
+body.retro-mode .badge-search input,
+body.retro-mode .badge-search input::placeholder,
+body.retro-mode .badge-search button,
+body.retro-mode .badge-search > span {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+}
+
+body.retro-mode .badge-search input {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.retro-mode .badge-card,
+body.retro-mode .badge-card:hover {
+  min-height: 280px;
+  border: 4px solid #0f380f !important;
+  border-radius: 0 !important;
+  background: #8bac0f !important;
+  box-shadow: 6px 6px 0 #306230 !important;
+  color: #0f380f !important;
+  transform: none;
+}
+
+body.retro-mode .badge-card:hover {
+  background: #9bbc0f !important;
+  box-shadow: 8px 8px 0 #0f380f !important;
+}
+
+body.retro-mode .badge-order {
+  color: #306230 !important;
+  font-family: "Courier New", monospace !important;
+}
+
+body.retro-mode .badge-medallion {
+  width: 104px;
+  height: 104px;
+  flex-basis: 104px;
+  border: 4px solid #0f380f !important;
+  border-radius: 0 !important;
+  background: #9bbc0f !important;
+  box-shadow: 4px 4px 0 #306230 !important;
+  color: #0f380f !important;
+  image-rendering: pixelated;
+}
+
+body.retro-mode .badge-medallion span {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+  font-size: 24px;
+  text-shadow: none;
+}
+
+body.retro-mode .badge-card-info h2 {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+  text-transform: uppercase;
+}
+
+body.retro-mode .badge-type {
+  border: 2px solid #306230 !important;
+  border-radius: 0 !important;
+  background: #9bbc0f !important;
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+  text-transform: uppercase;
+}
+
+body.retro-mode .badge-facts {
+  border-top: 2px dashed #306230 !important;
+}
+
+body.retro-mode .badge-facts dt,
+body.retro-mode .badge-facts dd {
+  color: #0f380f !important;
+  font-family: "Courier New", monospace !important;
+}
 
 @media (max-width: 1024px) {
   .badges-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

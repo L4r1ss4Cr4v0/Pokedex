@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { getPokemonImageUrl } from "../services/pokemonImage";
 import "../css/TrainerCard.css";
 
-export default function TrainerCard({ data, pokemons }) {
+export default function TrainerCard({ data, pokemons, badges = [] }) {
   const [expanded, setExpanded] = useState(false);
 
   const [theme, setTheme] = useState(
@@ -31,6 +31,13 @@ export default function TrainerCard({ data, pokemons }) {
 
   const trainer = data;
   const isRetro = theme === "retro";
+  const badgeIds = trainer.badgeIds ?? Array.from(
+    { length: Math.min(Math.max(Number(trainer.badges) || 0, 0), badges.length) },
+    (_, index) => index + 1,
+  );
+  const trainerBadges = badgeIds
+    .map((id) => badges.find((badge) => Number(badge.id) === Number(id)))
+    .filter(Boolean);
 
   const trainerImages = {
     "Team Rocket": "teamrocket.png",
@@ -74,7 +81,7 @@ export default function TrainerCard({ data, pokemons }) {
         </h2>
 
         <span className="trainer-summary">
-          {trainer.badges} insígnias ·{" "}
+          {badgeIds.length} {badgeIds.length === 1 ? "insígnia" : "insígnias"} ·{" "}
           {trainer.pokemonIds.length} Pokémon
         </span>
 
@@ -89,6 +96,27 @@ export default function TrainerCard({ data, pokemons }) {
 
       {expanded && (
         <div className="trainer-details">
+          <section className="trainer-badges">
+            <h3>Insígnias conquistadas <span>{trainerBadges.length}</span></h3>
+            {trainerBadges.length > 0 ? (
+              <div className="trainer-badge-list">
+                {trainerBadges.map((badge) => (
+                  <div className="trainer-badge-item" key={badge.id}>
+                    <span className={`trainer-badge-mark badge-type-${badge.type.toLowerCase()}`} aria-hidden="true">
+                      {String(badge.id).padStart(2, "0")}
+                    </span>
+                    <span className="trainer-badge-info">
+                      <strong>{badge.name}</strong>
+                      <small>{badge.leader} · {badge.city}</small>
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="trainer-no-badges">Nenhuma insígnia registrada.</p>
+            )}
+          </section>
+
           <h3>Equipe Pokémon</h3>
 
           <div className="trainer-pokemon-grid">

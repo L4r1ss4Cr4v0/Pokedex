@@ -5,7 +5,15 @@ import { colorTypes } from "../constants/colorTypes";
 import { getPokemonImageUrl } from "../services/pokemonImage";
 import "../css/PokemonCard.css";
 
-export default function PokemonCard({ data }) {
+export default function PokemonCard({
+  data,
+  isFavorite = false,
+  onToggleFavorite,
+  isInTeam = false,
+  onToggleTeam,
+  actionDisabled = false,
+  teamActionDisabled = false,
+}) {
   const pokemon = data;
   const navigate = useNavigate();
 
@@ -45,6 +53,19 @@ export default function PokemonCard({ data }) {
         <span className="number">
           #{String(pokemon.id).padStart(3, "0")}
         </span>
+        {onToggleFavorite && (
+          <button
+            type="button"
+            className={`favorite-toggle${isFavorite ? " is-favorite" : ""}`}
+            onClick={() => onToggleFavorite(pokemon.id)}
+            disabled={actionDisabled}
+            aria-pressed={isFavorite}
+            aria-label={`${isFavorite ? "Remover dos favoritos" : "Favoritar"} ${pokemon.name}`}
+            title={isFavorite ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+          >
+            {isFavorite ? "★" : "☆"}
+          </button>
+        )}
       </div>
 
       <img
@@ -55,6 +76,17 @@ export default function PokemonCard({ data }) {
 
       <div className="main-info-card">
         <h2 className="title">{pokemon.name}</h2>
+
+        {onToggleTeam && (
+          <button
+            type="button"
+            className={`team-toggle${isInTeam ? " is-in-team" : ""}`}
+            onClick={() => onToggleTeam(pokemon.id)}
+            disabled={actionDisabled || teamActionDisabled}
+          >
+            {isInTeam ? "Remover da equipe" : "Adicionar à equipe"}
+          </button>
+        )}
 
         <button
           type="button"

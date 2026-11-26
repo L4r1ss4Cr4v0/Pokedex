@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getPokemons, getTrainers } from "../services/api";
+import { getBadges, getPokemons, getTrainers } from "../services/api";
 import TrainerCard from "../components/TrainerCard";
 import BackButton from "../components/BackButton";
 import "../css/PokemonForm.css";
@@ -7,14 +7,16 @@ import "../css/PokemonForm.css";
 export default function TrainersPage() {
   const [trainers, setTrainers] = useState([]);
   const [pokemons, setPokemons] = useState([]);
+  const [badges, setBadges] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    Promise.all([getTrainers(), getPokemons()])
-      .then(([trainerList, pokemonList]) => {
+    Promise.all([getTrainers(), getPokemons(), getBadges()])
+      .then(([trainerList, pokemonList, badgeList]) => {
         setTrainers(trainerList);
         setPokemons(pokemonList);
+        setBadges(badgeList);
       })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
@@ -39,7 +41,7 @@ export default function TrainersPage() {
         {columns.map((column, index) => (
           <div className="trainers-column" key={index}>
             {column.map((trainer) => (
-              <TrainerCard key={trainer.id} data={trainer} pokemons={pokemons} />
+              <TrainerCard key={trainer.id} data={trainer} pokemons={pokemons} badges={badges} />
             ))}
           </div>
         ))}

@@ -10,15 +10,17 @@ public class Trainer {
     private Integer id;
     private String name;
     private Integer badges;
+    private List<Integer> badgeIds;
     private List<Integer> pokemonIds;
 
     public Trainer() {
     }
 
-    public Trainer(Integer id, String name, Integer badges, List<Integer> pokemonIds) {
+    public Trainer(Integer id, String name, Integer badges, List<Integer> badgeIds, List<Integer> pokemonIds) {
         this.id = id;
         this.name = name;
         this.badges = badges;
+        this.badgeIds = badgeIds;
         this.pokemonIds = pokemonIds;
     }
 
@@ -44,6 +46,14 @@ public class Trainer {
 
     public void setBadges(Integer badges) {
         this.badges = badges;
+    }
+
+    public List<Integer> getBadgeIds() {
+        return badgeIds;
+    }
+
+    public void setBadgeIds(List<Integer> badgeIds) {
+        this.badgeIds = badgeIds;
     }
 
     public List<Integer> getPokemonIds() {

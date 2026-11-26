@@ -88,6 +88,12 @@ public class PokemonService {
                 new Query(Criteria.where("pokemonIds").is(id)),
                 new Update().pull("pokemonIds", id),
                 Trainer.class);
+        mongoTemplate.updateMulti(
+                new Query(new Criteria().orOperator(
+                        Criteria.where("favoritePokemonIds").is(id),
+                        Criteria.where("teamPokemonIds").is(id))),
+                new Update().pull("favoritePokemonIds", id).pull("teamPokemonIds", id),
+                "users");
     }
 
     private int nextId() {

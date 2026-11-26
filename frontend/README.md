@@ -42,6 +42,9 @@ O Vite informa o endereço local no terminal (normalmente `http://localhost:5173
 Verificações do frontend:
 
 ```powershell
+npm test
 npm run lint
 npm run build
 ```
+
+Os testes unitários usam Vitest e Testing Library para verificar a seleção de imagens, chamadas e erros da API e interações dos cards de Pokémon.
